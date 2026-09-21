@@ -7,6 +7,7 @@ public class Controller {
 		private static Menu menu = new Menu();
 		private static VentanaEmergente ventana = new VentanaEmergente();
 		
+		
 		public static void start() {
 			
 			boolean end = false;
