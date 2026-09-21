@@ -7,7 +7,7 @@ public class Casa extends Alojamiento{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Casa(long id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
+	public Casa(int id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
 			boolean cancelado, String tipo) {
 		super(id, nombre, ciudad, ubicacion, capacidad, precioBase, cancelado, tipo);
 		// TODO Auto-generated constructor stub
