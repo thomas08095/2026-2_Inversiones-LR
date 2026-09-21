@@ -69,6 +69,7 @@ public class Menu {
 				+ "| 1. Crear Reserva.\n"
 				+ "| 2. Consultar Detalles de Reserva.\n"
 				+ "| 3. Cancelar Reserva.\n\n"
+				+ "| 4. Matar a Henry (La paz nunca fue una opción) \n\n"
 				+ "||=============================||\n");
 	}
 
