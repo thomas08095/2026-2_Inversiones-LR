@@ -9,6 +9,8 @@ public class Controller {
 	public static void start() {
 		menu.start();
 		ventana.LeerString("Bienvenido a HENRY CONDONES LR");
+		ventana.LeerString("GABRIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEL.java TEAMO");
+
 
 		
 	}
