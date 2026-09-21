@@ -3,6 +3,10 @@ package co.edu.unbosque.view;
 import javax.swing.JOptionPane;
 
 public class VentanaEmergente {
+	
+	public void mostrar(String txt) {
+		JOptionPane.showConfirmDialog(null, txt);
+	}
 		
 	public static String LeerString(String txt) {
 		String aux = JOptionPane.showInputDialog(txt);
@@ -11,8 +15,17 @@ public class VentanaEmergente {
 	
 	public static int LeerInt(String txt) {
 		String aux = JOptionPane.showInputDialog(txt);
-		int dato = Integer.parseInt(aux);
-		return dato;
+		if (aux == null) {
+	        return -1;
+	    }
+		try {
+			int dato = Integer.parseInt(aux);
+			return dato;
+		} catch(Exception e) {
+			return -1;
+		}
+		
+		
 	}
 	
 	public static double LeerDouble(String txt) {
