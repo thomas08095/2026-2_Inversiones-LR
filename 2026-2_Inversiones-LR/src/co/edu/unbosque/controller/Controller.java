@@ -20,10 +20,10 @@ public class Controller {
 					respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS());
 					break;
 				case 2:
-					respuesta = ventana.LeerInt(menu.menu_RESERVAS());
+					respuesta = ventana.LeerInt(menu.menu_HUESPEDES());
 					break;
 				case 3:
-					respuesta = ventana.LeerInt(menu.menu_HUESPEDES());
+					respuesta = ventana.LeerInt(menu.menu_RESERVAS());
 					break;
 				case 4:
 					break;
