@@ -71,6 +71,19 @@ public class Menu {
 				+ "| 3. Cancelar Reserva.\n\n"
 				+ "| 4. Matar a Henry (La paz nunca fue una opción) \n\n"
 				+ "||=============================||\n");
+		
+		
+	}
+	
+	public static void menu_RESERVASVOID() {
+		System.out.println("||=========== RESERVAS ===========||\n\n"
+				+ "| 1. Crear Reserva.\n"
+				+ "| 2. Consultar Detalles de Reserva.\n"
+				+ "| 3. Cancelar Reserva.\n\n"
+				+ "| 4. Matar a Henry (La paz nunca fue una opción) \n\n"
+				+ "||=============================||\n");
+		
+		
 	}
 
 }
