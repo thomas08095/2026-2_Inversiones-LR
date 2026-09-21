@@ -14,6 +14,7 @@ public class Controller {
 			int respuesta = 0;
 			while(!end) {
 				respuesta = ventana.LeerInt(menu.menu_PRINCIPAL());
+				
 				switch(respuesta) {
 				case 1:
 					respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS());

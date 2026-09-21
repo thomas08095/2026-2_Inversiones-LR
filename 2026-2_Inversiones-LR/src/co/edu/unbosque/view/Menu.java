@@ -13,6 +13,7 @@ public class Menu {
 				+ "| 5. Salir\n\n"
 				+ "||=============================||\n");
 		return txt;
+		
 	}
 	
 	public static String menu_ALOJAMIENTOS() {

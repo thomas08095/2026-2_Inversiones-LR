@@ -23,6 +23,7 @@ public class VentanaEmergente {
 			return dato;
 		} catch(Exception e) {
 			return -1;
+			
 		}
 		
 		
