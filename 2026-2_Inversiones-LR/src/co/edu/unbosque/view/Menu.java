@@ -83,7 +83,6 @@ public class Menu {
 				+ "| 4. Matar a Henry (La paz nunca fue una opción) \n\n"
 				+ "||=============================||\n");
 		
-		
 	}
 
 }

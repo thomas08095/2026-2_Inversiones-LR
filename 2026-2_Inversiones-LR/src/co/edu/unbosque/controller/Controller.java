@@ -8,8 +8,9 @@ public class Controller {
 		private static VentanaEmergente ventana = new VentanaEmergente();
 	public static void start() {
 		menu.start();
-		ventana.LeerString("Bienvenido a HENRY CONDONES LR");
-
+		ventana.LeerString("Bienvenido a HENRY and CARLOTE CONDONES LR");
+		ventana.LeerString("Te invito al fusilamiento de henry no faltes");
+		
 		
 	}
 	
