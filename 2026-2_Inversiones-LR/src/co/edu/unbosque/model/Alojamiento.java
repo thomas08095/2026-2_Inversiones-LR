@@ -2,13 +2,13 @@ package co.edu.unbosque.model;
 
 public abstract class Alojamiento {
 	
-	private long id;
+	private long id = 1L;
     private String nombre;
     private String ciudad;
     private String ubicacion;
     private int capacidad;
     private double precioBase;
-    private boolean estado = false;
+    private boolean cancelado = false;
     private String tipo;  
     
 	public Alojamiento() {
@@ -16,7 +16,7 @@ public abstract class Alojamiento {
 	}
 
 	public Alojamiento(long id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
-			boolean estado, String tipo) {
+			boolean cancelado, String tipo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -24,7 +24,7 @@ public abstract class Alojamiento {
 		this.ubicacion = ubicacion;
 		this.capacidad = capacidad;
 		this.precioBase = precioBase;
-		this.estado = estado;
+		this.cancelado = cancelado;
 		this.tipo = tipo;
 	}
 	
@@ -78,12 +78,12 @@ public abstract class Alojamiento {
 		this.precioBase = precioBase;
 	}
 
-	public boolean isEstado() {
-		return estado;
+	public boolean isCancelado() {
+		return cancelado;
 	}
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void setCancelado(boolean cancelado) {
+		this.cancelado = cancelado;
 	}
 
 	public String getTipo() {

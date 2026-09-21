@@ -6,8 +6,6 @@ public class AplMain {
 		
 		Controller ct = new Controller();
 		ct.start();
-		
-		
 
 	}
 

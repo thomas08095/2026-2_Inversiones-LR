@@ -1,5 +1,5 @@
 package co.edu.unbosque.model;
 
-public class Huesped {
+public class Huespedes {
 
 }
