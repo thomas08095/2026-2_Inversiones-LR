@@ -9,8 +9,8 @@ public abstract class Alojamiento {
     private int capacidad;
     private double precioBase;
     private boolean cancelado = false;
-    private EstadoAlojamiento estado;
-    private Ciudad ciudadEnum;
+    protected  EstadoAlojamiento estado;
+    protected  Ciudad ciudadEnum;
     private String tipo;  
     
 	public Alojamiento() {
