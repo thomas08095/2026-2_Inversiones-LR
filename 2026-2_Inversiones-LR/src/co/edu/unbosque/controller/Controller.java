@@ -18,6 +18,16 @@ public class Controller {
 				switch(respuesta) {
 				case 1:
 					respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS());
+					
+					switch(respuesta) {
+					case 1: 
+						alojamientos_BUSCAR(respuesta);
+						break;
+					default:
+						System.out.println("GAY");
+						break;
+					}
+					
 					break;
 				case 2:
 					respuesta = ventana.LeerInt(menu.menu_HUESPEDES());
@@ -34,8 +44,14 @@ public class Controller {
 				default:
 					ventana.mostrar("\n!! == OPCION INVALIDA == !!\n");
 					break;
-					
 				}
 			}
 	}
+		
+		public static void alojamientos_BUSCAR(int respuesta) {
+				respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_CIUDADES());	
+				respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_TIPOS());	
+				respuesta = ventana.LeerInt("¿Capacidad Minima?");
+				respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
+			}	
 }

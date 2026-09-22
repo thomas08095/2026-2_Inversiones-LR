@@ -25,6 +25,27 @@ public class Menu {
 		return txt;
 	}
 	
+	public static String menu_ALOJAMIENTOS_CIUDADES() {
+		txt = ("||====== CIUDADES =======||\n\n"
+				+ "| 1. BOGOTA.\n"
+				+ "| 2. MEDELLIN.\n"
+				+ "| 3. CUCUTA.\n"
+				+ "| 4. CARACAS.\n"
+				+ "| 3. BUENOS AIRES.\n"
+				+ "| 5. BARRACABERMEJA.\n\n"
+				+ "||=============================||\n");
+		return txt;
+	}
+	
+	public static String menu_ALOJAMIENTOS_TIPOS() {
+		txt = ("||====== CIUDADES =======||\n\n"
+				+ "| 1. CASA.\n"
+				+ "| 2. APARTAMENTO.\n"
+				+ "| 3. CABAÑA.\n\n"
+				+ "||=============================||\n");
+		return txt;
+	}
+	
 	public static String menu_HUESPEDES() {
 		txt = ("||====== HUESPEDES =======||\n\n"
 				+ "| 1. Registrar Huespedes.\n"
@@ -42,6 +63,7 @@ public class Menu {
 				+ "||=============================||\n");
 		return txt;
 	}
+	
 	
 
 }
