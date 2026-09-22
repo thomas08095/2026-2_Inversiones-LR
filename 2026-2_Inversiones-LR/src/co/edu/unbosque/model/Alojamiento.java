@@ -9,14 +9,17 @@ public abstract class Alojamiento {
     private int capacidad;
     private double precioBase;
     private boolean cancelado = false;
+    private EstadoAlojamiento estado;
+    private Ciudad ciudadEnum;
     private String tipo;  
     
 	public Alojamiento() {
 		super();
 	}
 
+
 	public Alojamiento(long id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
-			boolean cancelado, String tipo) {
+			boolean cancelado, EstadoAlojamiento estado, Ciudad ciudadEnum, String tipo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -25,9 +28,12 @@ public abstract class Alojamiento {
 		this.capacidad = capacidad;
 		this.precioBase = precioBase;
 		this.cancelado = cancelado;
+		this.estado = estado;
+		this.ciudadEnum = ciudadEnum;
 		this.tipo = tipo;
 	}
-	
+
+
 	public abstract double getPrecioAdicional();
 
 	public long getId() {
@@ -95,6 +101,41 @@ public abstract class Alojamiento {
 	}
 	
 	
+	
+	public EstadoAlojamiento getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(EstadoAlojamiento estado) {
+		this.estado = estado;
+	}
+
+
+	public Ciudad getCiudadEnum() {
+		return ciudadEnum;
+	}
+
+
+	public void setCiudadEnum(Ciudad ciudadEnum) {
+		this.ciudadEnum = ciudadEnum;
+	}
+
+
+
+	public enum EstadoAlojamiento {
+
+		ACTIVO, INACTIVO, PENDIENTE
+	}
+	
+	public enum Ciudad {
+        BOGOTA,
+        MEDELLIN,
+        CUCUTA,
+        CARACAS,
+        BUENOS_AIRES,
+        BARRACABERMEJA
+    }
     
     
 }
