@@ -1,12 +1,12 @@
 package co.edu.unbosque.controller;
 import co.edu.unbosque.view.*;
-
+import co.edu.unbosque.model.*;
+import co.edu.unbosque.model.Alojamiento.Ciudad;
 public class Controller {
-	
 
 		private static Menu menu = new Menu();
 		private static VentanaEmergente ventana = new VentanaEmergente();
-		
+		private static Alojamiento a = new Casa();
 		
 		public static void start() {
 			

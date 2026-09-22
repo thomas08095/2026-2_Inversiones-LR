@@ -23,10 +23,7 @@ public class VentanaEmergente {
 			return dato;
 		} catch(Exception e) {
 			return -1;
-			
-		}
-		
-		
+		}	
 	}
 	
 	public static double LeerDouble(String txt) {
@@ -39,6 +36,11 @@ public class VentanaEmergente {
 		String aux = JOptionPane.showInputDialog(txt);
 		boolean dato = Boolean.parseBoolean(aux);
 		return dato;
+	}
+	
+	public static String LeerConComboBox(String mensaje, String titulo, String[] opciones) {
+		String seleccion = "";
+		return seleccion;
 	}
 
 }
