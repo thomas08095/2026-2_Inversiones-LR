@@ -1,7 +1,6 @@
 package co.edu.unbosque.controller;
-import co.edu.unbosque.view.*;
 import co.edu.unbosque.model.*;
-import co.edu.unbosque.model.Alojamiento.Ciudad;
+import co.edu.unbosque.view.*;
 public class Controller {
 
 		private static Menu menu = new Menu();
