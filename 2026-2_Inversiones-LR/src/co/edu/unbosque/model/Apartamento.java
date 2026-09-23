@@ -1,7 +1,5 @@
 package co.edu.unbosque.model;
 
-import co.edu.unbosque.model.Alojamiento.Ciudad;
-import co.edu.unbosque.model.Alojamiento.EstadoAlojamiento;
 
 public class Apartamento extends Alojamiento{
 
