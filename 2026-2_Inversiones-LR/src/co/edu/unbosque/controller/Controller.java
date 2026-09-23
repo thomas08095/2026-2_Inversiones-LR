@@ -7,7 +7,6 @@ public class Controller {
 		private static VentanaEmergente ventana = new VentanaEmergente();
 		
 		private static Alojamiento a = new Casa();
-		private static Huesped h = new Huesped();
 		
 		private static Controller_HUESPED con_H = new Controller_HUESPED();
 		
@@ -37,6 +36,9 @@ public class Controller {
 					switch(respuesta) {
 					case 1: 
 						huespedes_REGISTRAR(respuesta);
+						break;
+					case 2:
+						con_H.consultarHuespedes();
 						break;
 					default:
 						System.out.println("GAY");
@@ -69,6 +71,7 @@ public class Controller {
 		public static void huespedes_REGISTRAR(int respuesta) {
 			boolean end = false;
 			while(!end) {
+			Huesped h = new Huesped();
 			respuesta = ventana.LeerInt("||====== IDENTIFICADOR =======||\n\n"
 					+ "| 1. Ingrese su Identificador con Enteros.\n\n"
 					+ "||=============================||\n");	
@@ -105,6 +108,7 @@ public class Controller {
 			if(respuesta == 0) {
 				con_H.registrarHuesped(h);
 				end = true;
+				ventana.mostrar("Se Resigistro Al Huesped con Exito.");
 			}
 			
 			else {
@@ -112,6 +116,5 @@ public class Controller {
 			}
 			
 			}
-			
 		}	
 }
