@@ -17,9 +17,15 @@ public class Apartamento extends Alojamiento{
 	}
 
 	@Override
-	public double getPrecioAdicional() {
+	public double calcularValorReserva(int numeroDeNoches) {
 		// TODO Auto-generated method stub
-		return 0;
+		return (getPrecioBase() * numeroDeNoches);
+	}
+
+	@Override
+	public String getTipo() {
+		// TODO Auto-generated method stub
+		return "Apartamento";
 	}
 	
 	
