@@ -7,8 +7,12 @@ public class Huesped {
     private String apellido;
     private String correo;
     private String telefono;
-
-    public Huesped(int id, String nombre, String apellido, String correo, String telefono) {
+    
+    public Huesped() {
+		super();
+	}
+    
+	public Huesped(int id, String nombre, String apellido, String correo, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

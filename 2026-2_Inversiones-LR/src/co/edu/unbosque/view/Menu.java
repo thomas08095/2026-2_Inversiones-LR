@@ -54,6 +54,14 @@ public class Menu {
 		return txt;
 	}
 	
+	public static String menu_HUESPEDES_() {
+		txt = ("||====== HUESPEDES =======||\n\n"
+				+ "| 1. Registrar Huespedes.\n"
+				+ "| 2. Consultar Detalles de Huespedes.\n\n"
+				+ "||=============================||\n");
+		return txt;
+	}
+	
 	public String menu_RESERVAS() {
 		txt = ("||=========== RESERVAS ===========||\n\n"
 				+ "| 1. Crear Reserva.\n"

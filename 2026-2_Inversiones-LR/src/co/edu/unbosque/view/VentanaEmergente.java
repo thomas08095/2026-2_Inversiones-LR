@@ -5,10 +5,18 @@ import javax.swing.JOptionPane;
 public class VentanaEmergente {
 	
 	public void mostrar(String txt) {
-		JOptionPane.showConfirmDialog(null, txt);
+		JOptionPane.showMessageDialog(null, txt);
+	}
+	
+	public void mostrarERROR(String txt, String titulo) {
+		JOptionPane.showMessageDialog(null, txt, titulo, 0, null);
+	}
+	
+	public int preguntarSiNo(String txt, String titulo) {
+	    return JOptionPane.showConfirmDialog(null, txt, titulo, JOptionPane.YES_NO_OPTION);
 	}
 		
-	public static String LeerString(String txt) {
+	public String LeerString(String txt) {
 		String aux = JOptionPane.showInputDialog(txt);
 		return aux;
 	}
