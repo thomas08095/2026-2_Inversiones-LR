@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Reserva {
 	
-	private String id;
+	private int id;
 	private Huesped huesped;
 	private Alojamiento alojamiento;
 	private LocalDate fechaLlegada;
@@ -19,7 +19,7 @@ public class Reserva {
 		super();
 	}
 
-	public Reserva(String id, Huesped huesped, Alojamiento alojamiento, LocalDate fechaLlegada, LocalDate fechaSalida,
+	public Reserva(int id, Huesped huesped, Alojamiento alojamiento, LocalDate fechaLlegada, LocalDate fechaSalida,
 			int numeroHuespedes, int numeroDeNoches, double valorTotal, EstadoReserva estado) {
 		super();
 		this.id = id;
@@ -61,11 +61,11 @@ public class Reserva {
 	}
 	
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -136,7 +136,7 @@ public class Reserva {
 	
 	public enum EstadoReserva {
 
-		CONFIRMADA, CANCELADA, PENDIENTE
+		CONFIRMADA, CANCELADA
 	}
 	
 	
