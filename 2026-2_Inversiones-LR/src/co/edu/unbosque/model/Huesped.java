@@ -15,6 +15,13 @@ public class Huesped {
         this.correo = correo;
         this.telefono = telefono;
     }
+    
+    public boolean validarCorreo(String correo) {
+    	if(correo.contains("@")) {
+    		return true;
+    	}
+    	else return false;
+    }
     public void setId(int id) {
         this.id = id;
     }
@@ -45,5 +52,9 @@ public class Huesped {
     public String getTelefono() {
         return telefono;
     }
+    public String getNombreCompleto() {
+        return nombre + " " + apellido;
+    }
+    
 
 }
