@@ -9,7 +9,7 @@ public class Controller_HUESPED {
 	
 	public void registrarHuesped(Huesped h){
 		for(Huesped i : huespedes) {
-			if(i.getId() == h.getId()) {
+			if(i.getId().equals(h.getId())) {
 				v.mostrarERROR("EL ID Y EXISTE", "ERROR: HENRY");
 				return;
 			}

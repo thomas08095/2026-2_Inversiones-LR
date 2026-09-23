@@ -72,12 +72,12 @@ public class Controller {
 			boolean end = false;
 			while(!end) {
 			Huesped h = new Huesped();
-			respuesta = ventana.LeerInt("||====== IDENTIFICADOR =======||\n\n"
+			String str = ventana.LeerString("||====== IDENTIFICADOR =======||\n\n"
 					+ "| 1. Ingrese su Identificador con Enteros.\n\n"
 					+ "||=============================||\n");	
-			h.setId(respuesta);
+			h.setId(str);
 			
-			String str = ventana.LeerString("||====== NOMBRE Y APELLIDO =======||\n\n"
+			str = ventana.LeerString("||====== NOMBRE Y APELLIDO =======||\n\n"
 					+ "| 1. Ingrese su Nombre.\n\n"
 					+ "||=============================||\n");	
 			h.setNombre(str);

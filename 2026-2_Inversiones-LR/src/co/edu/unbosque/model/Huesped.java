@@ -2,7 +2,7 @@ package co.edu.unbosque.model;
 
 public class Huesped {
 
-    private int id;
+    private String id;
     private String nombre;
     private String apellido;
     private String correo;
@@ -12,7 +12,7 @@ public class Huesped {
 		super();
 	}
     
-	public Huesped(int id, String nombre, String apellido, String correo, String telefono) {
+	public Huesped(String id, String nombre, String apellido, String correo, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,10 +26,10 @@ public class Huesped {
     	}
     	else return false;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
     public void setNombre(String nombre) {
