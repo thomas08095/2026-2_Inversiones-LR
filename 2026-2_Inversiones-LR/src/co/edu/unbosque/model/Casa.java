@@ -2,6 +2,8 @@ package co.edu.unbosque.model;
 
 public class Casa extends Alojamiento{
 
+	private final int tarifaServicio = 15000;
+
 	public Casa() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -14,9 +16,15 @@ public class Casa extends Alojamiento{
 	}
 
 	@Override
-	public double getPrecioAdicional() {
+	public double calcularValorReserva(int numeroDeNoches) {
 		// TODO Auto-generated method stub
-		return 0;
+		return (getPrecioBase() * numeroDeNoches)+tarifaServicio;
+	}
+
+	@Override
+	public String getTipo() {
+		// TODO Auto-generated method stub
+		return "Casa";
 	}
 
 	

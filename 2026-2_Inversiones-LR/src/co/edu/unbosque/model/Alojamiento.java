@@ -33,9 +33,6 @@ public abstract class Alojamiento {
 		this.tipo = tipo;
 	}
 
-
-	public abstract double getPrecioAdicional();
-
 	public int getId() {
 		return id;
 	}
@@ -92,15 +89,11 @@ public abstract class Alojamiento {
 		this.cancelado = cancelado;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
+	public abstract String getTipo();
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 	
 	public EstadoAlojamiento getEstado() {
 		return estado;
@@ -121,11 +114,20 @@ public abstract class Alojamiento {
 		this.ciudadEnum = ciudadEnum;
 	}
 
+	public void activarAlojamiento() { 
+		this.estado = EstadoAlojamiento.ACTIVO; 
+	}
 
+	public void desactivarAlojamiento() { 
+		this.estado = EstadoAlojamiento.INACTIVO;
+	}
+
+	public abstract double calcularValorReserva(int numeroDeNoches);
+	
 
 	public enum EstadoAlojamiento {
 
-		ACTIVO, INACTIVO, PENDIENTE
+		ACTIVO, INACTIVO
 	}
 	
 	public enum Ciudad {
