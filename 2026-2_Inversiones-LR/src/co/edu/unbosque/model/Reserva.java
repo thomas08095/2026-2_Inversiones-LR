@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva {
 	
@@ -31,6 +32,34 @@ public class Reserva {
 		this.valorTotal = valorTotal;
 		this.estado = estado;
 	}
+	
+	public int calcularNumNoches() {
+		if(this.fechaLlegada == null && this.fechaSalida == null) {
+			return 0;
+		}
+		long noches = ChronoUnit.DAYS.between(this.fechaLlegada, this.fechaSalida);
+		
+		if(noches <= 0) {
+			throw new IllegalArgumentException("La fecha de salida debe ser posterior a la fecha de llegada");
+		}
+		
+		return this.numeroDeNoches;
+	}
+	
+	public void validarCantidadHuespedes() {
+		if(this.numeroHuespedes <= 0) {
+			throw new IllegalArgumentException("El número de huéspedes debe ser mayor que cero");
+		}
+		
+		if(this.alojamiento == null) {
+			throw new IllegalStateException("Debe asignar un alojamiento antes de validar los huéspedes");
+		}
+		
+		if(this.numeroHuespedes > this.alojamiento.getCapacidad()) {
+			throw new IllegalArgumentException("El número de huéspedes supera la capacidad del alojamiento");
+		}
+	}
+	
 
 	public int getId() {
 		return id;
@@ -103,9 +132,13 @@ public class Reserva {
 	public void setEstado(EstadoReserva estado) {
 		this.estado = estado;
 	}
+	
+	
 	public enum EstadoReserva {
 
 		CONFIRMADA, CANCELADA
 	}
+	
+	
 	
 }
