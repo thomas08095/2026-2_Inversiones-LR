@@ -73,7 +73,7 @@ public class Controller {
 			while(!end) {
 			Huesped h = new Huesped();
 			String str = ventana.LeerString("||====== IDENTIFICADOR =======||\n\n"
-					+ "| 1. Ingrese su Identificador con Enteros.\n\n"
+					+ "| 1. Ingrese su Identificador.\n\n"
 					+ "||=============================||\n");	
 			h.setId(str);
 			
