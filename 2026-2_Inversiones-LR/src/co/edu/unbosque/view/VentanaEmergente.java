@@ -13,7 +13,7 @@ public class VentanaEmergente {
 		return aux;
 	}
 	
-	public static int LeerInt(String txt) {
+	public int LeerInt(String txt) {
 		String aux = JOptionPane.showInputDialog(txt);
 		if (aux == null) {
 	        return -1;

@@ -25,7 +25,7 @@ public class Menu {
 		return txt;
 	}
 	
-	public static String menu_ALOJAMIENTOS_CIUDADES() {
+	public String menu_ALOJAMIENTOS_CIUDADES() {
 		txt = ("||====== CIUDADES =======||\n\n"
 				+ "| 1. BOGOTA.\n"
 				+ "| 2. MEDELLIN.\n"
@@ -37,7 +37,7 @@ public class Menu {
 		return txt;
 	}
 	
-	public static String menu_ALOJAMIENTOS_TIPOS() {
+	public String menu_ALOJAMIENTOS_TIPOS() {
 		txt = ("||====== CIUDADES =======||\n\n"
 				+ "| 1. CASA.\n"
 				+ "| 2. APARTAMENTO.\n"
@@ -54,7 +54,7 @@ public class Menu {
 		return txt;
 	}
 	
-	public static String menu_RESERVAS() {
+	public String menu_RESERVAS() {
 		txt = ("||=========== RESERVAS ===========||\n\n"
 				+ "| 1. Crear Reserva.\n"
 				+ "| 2. Consultar Detalles de Reserva.\n"

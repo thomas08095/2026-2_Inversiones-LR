@@ -13,11 +13,11 @@ public class Controller {
 			boolean end = false;
 			int respuesta = 0;
 			while(!end) {
-				respuesta = ventana.LeerInt(menu.menu_PRINCIPAL());
+				respuesta = ventana.LeerInt(Menu.menu_PRINCIPAL());
 				
 				switch(respuesta) {
 				case 1:
-					respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS());
+					respuesta = ventana.LeerInt(Menu.menu_ALOJAMIENTOS());
 					
 					switch(respuesta) {
 					case 1: 
