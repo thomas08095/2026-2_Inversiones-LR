@@ -25,6 +25,9 @@ public class Controller {
 					case 1: 
 						alojamientos_BUSCAR(respuesta);
 						break;
+					case 2:
+						alojamientos_REGISTRAR(respuesta);
+						break;
 					default:
 						System.out.println("GAY");
 						break;
@@ -66,7 +69,14 @@ public class Controller {
 				respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_TIPOS());	
 				respuesta = ventana.LeerInt("¿Capacidad Minima?");
 				respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
-			}
+		}
+		
+		public static void alojamientos_REGISTRAR(int respuesta) {
+			respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_CIUDADES());	
+			respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_TIPOS());	
+			respuesta = ventana.LeerInt("¿Capacidad Minima?");
+			respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
+	}
 		
 		public static void huespedes_REGISTRAR(int respuesta) {
 			boolean end = false;
@@ -75,6 +85,7 @@ public class Controller {
 			String str = ventana.LeerString("||====== IDENTIFICADOR =======||\n\n"
 					+ "| 1. Ingrese su Identificador.\n\n"
 					+ "||=============================||\n");	
+			str = str.replaceAll("\\D", ""); //Esto quita todos los valores que no sean NUMEROS.
 			h.setId(str);
 			
 			str = ventana.LeerString("||====== NOMBRE Y APELLIDO =======||\n\n"
@@ -108,7 +119,7 @@ public class Controller {
 			if(respuesta == 0) {
 				con_H.registrarHuesped(h);
 				end = true;
-				ventana.mostrar("Se Resigistro Al Huesped con Exito.");
+				
 			}
 			
 			else {
