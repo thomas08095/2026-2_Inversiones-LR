@@ -2,7 +2,7 @@ package co.edu.unbosque.model;
 
 public abstract class Alojamiento {
 	
-	private int id;
+	private String id;
     private String nombre;
     private String ciudad;
     private String ubicacion;
@@ -18,7 +18,7 @@ public abstract class Alojamiento {
 	}
 
 
-	public Alojamiento(int id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
+	public Alojamiento(String id, String nombre, String ciudad, String ubicacion, int capacidad, double precioBase,
 			boolean cancelado, EstadoAlojamiento estado, Ciudad ciudadEnum, String tipo) {
 		super();
 		this.id = id;
@@ -33,11 +33,11 @@ public abstract class Alojamiento {
 		this.tipo = tipo;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

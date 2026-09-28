@@ -9,6 +9,11 @@ public class Controller_ALOJAMIENTOS {
 	VentanaEmergente v = new VentanaEmergente();
 	
 	public void registrarHuesped(Alojamiento a){
-		
+		if (a.getId().isBlank() || a.getId().isEmpty() || a.getId() == null ) {
+			v.mostrarERROR("Lo Sentimos.\n---", "ERROR: ---");
+		}
+		if(a.getNombre() == null || a.getNombre().isBlank()) {
+			v.mostrarERROR("Lo Sentimos.\n---", "ERROR: ---");
+		}
 	}
 }
