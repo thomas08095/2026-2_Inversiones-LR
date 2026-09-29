@@ -8,8 +8,26 @@ public class Controller_ALOJAMIENTOS {
 	ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	VentanaEmergente v = new VentanaEmergente();
 	
-	public ArrayList<Alojamiento> consultar(){
-		return alojamientos;
+	public void consultar() {
+	    if (alojamientos.isEmpty()) {
+	        v.mostrar("No hay Alojamientos registrados actualmente.");
+	        return;
+	    }
+	    
+	    String txt = "||=================================== LISTA DE ALOJAMIENTOS ===============================||\n";
+	    
+	    for(Alojamiento a : alojamientos) {
+	        txt += "\n" +    "||| NOMBRE: " + a.getNombre()  + " |||"
+	             + "\n| CIUDAD: " + a.getCiudadEnum() 
+	             + "                      | DIRECCION: " + a.getDireccion() 
+	             + "\n| PRECIO BASE: " + a.getPrecioBase() + " COP" 
+	             + "                | CAPACIDAD: " + a.getCapacidad() 
+	             + "                | TIPO: "  + a.getTipo() 
+	             + "                | ESTADO: "  + a.getEstado()
+	             + "\n\n-==========================================================================================-\n";
+	    }
+	    
+	    v.mostrar(txt);
 	}
 	
 	public ArrayList<Alojamiento> buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){

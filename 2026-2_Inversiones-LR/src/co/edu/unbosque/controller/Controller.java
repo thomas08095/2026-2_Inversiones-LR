@@ -7,13 +7,20 @@ public class Controller {
     private static Menu menu = new Menu();
     private static VentanaEmergente ventana = new VentanaEmergente();
     
-    private static Alojamiento a = new Casa();
+    private static Alojamiento a;
     
     private static Controller_HUESPED con_H = new Controller_HUESPED();
+    private static Controller_ALOJAMIENTOS con_A = new Controller_ALOJAMIENTOS();
     
     public static void start() {
         boolean end = false;
         int respuesta = 0;
+        a = new Casa("1234567890", "CASA BLANCA DE DOS PISOS", "Calle 160b #10-55", 
+                4, 5_000_000, "Casa", Alojamiento.Ciudad.BOGOTA, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        a = new Apartamento("0987654321", "APARTAMENTO PEQUEÑO PISO 4, TORRE 6", "Carrera 45 # 53-12", 
+                2, 1_250_000, "Apartamento", Alojamiento.Ciudad.MEDELLIN, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
         while(!end) {
             respuesta = ventana.LeerInt(Menu.menu_PRINCIPAL());
             
@@ -26,7 +33,7 @@ public class Controller {
                     alojamientos_BUSCAR(respuesta);
                     break;
                 case 2:
-                    alojamientos_REGISTRAR(respuesta);
+                	alojamientos_CONSULTAR_SINFILTROS(respuesta);
                     break;
                 default:
                     System.out.println("GAY");
@@ -41,11 +48,11 @@ public class Controller {
                     huespedes_REGISTRAR(respuesta);
                     break;
                 case 2:
-                    try {
-                        con_H.consultarHuespedes();
-                    } catch (ProgramException e) {
-                        ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
-                    }
+                	 try {
+                         con_H.consultarHuespedes();
+                     } catch (ProgramException e) {
+                         ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
+                     }
                     break;
                 default:
                     System.out.println("GAY");
@@ -75,12 +82,11 @@ public class Controller {
         respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
     }
         
-    public static void alojamientos_REGISTRAR(int respuesta) {
-        respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_CIUDADES()); 
-        respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_TIPOS());    
-        respuesta = ventana.LeerInt("¿Capacidad Minima?");
-        respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
+    public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
+        con_A.consultar();
     }
+    
+    
         
     public static void huespedes_REGISTRAR(int respuesta) {
         boolean end = false;
