@@ -8,6 +8,10 @@ public class Controller_ALOJAMIENTOS {
 	ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	VentanaEmergente v = new VentanaEmergente();
 	
+	public ArrayList<Alojamiento> consultar(){
+		return alojamientos;
+	}
+	
 	public ArrayList<Alojamiento> buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos) {
