@@ -1,39 +1,32 @@
 package co.edu.unbosque.controller;
 import java.util.ArrayList;
-import co.edu.unbosque.model.Huesped;
+import co.edu.unbosque.model.*;
 import co.edu.unbosque.view.*;
 public class Controller_HUESPED {
 	
 	ArrayList<Huesped> huespedes = new ArrayList<Huesped>();
 	VentanaEmergente v = new VentanaEmergente();
 	
-	public void registrarHuesped(Huesped h){
-		
-		if(h.getId().isBlank() || h.getId().isEmpty()) {
-			v.mostrarERROR("Lo Sentimos.\nTu ID esta vacia.", "ERROR: ID INVALIDA");
-			return;
-		}
-		if(h.getNombreCompleto().isBlank() || h.getNombreCompleto().isEmpty()) {
-			v.mostrarERROR("Lo Sentimos.\nTu Nombre o Apellido esta vacio.", "ERROR: NOMBRE INVALIDO");
-			return;
-		}
-		if(!h.validarCorreo(h.getCorreo()) || h.getCorreo().isBlank() || h.getCorreo().isEmpty()) {
-			v.mostrarERROR("Lo Sentimos.\nEl Correo no es valido.", "ERROR: Correo Invalido");
-			return;
-		}
-		if(!(h.getTelefono().length() == 10 || h.getTelefono().isBlank() || h.getTelefono().isEmpty())) {
-			v.mostrarERROR("Lo Sentimos.\nEl Telofono no es valido. (Recuerda que son 10 Digitos.)", "ERROR: Telefono Invalido");
-			return;
-		}
-		for(Huesped i : huespedes) {
-			if(i.getId().equals(h.getId())) {
-				v.mostrarERROR("EL ID YA EXISTE", "ERROR: ID ya existente");
-				return;
-			}
-		}
-		huespedes.add(h);
-		v.mostrar("Se Resigistro Al Huesped con Exito.");
-	}
+	public void registrarHuesped(Huesped h) throws ProgramException {
+        if(h.getId() == null || h.getId().isBlank() || h.getId().isEmpty()) {
+            throw new ProgramException("Tu ID esta vacia.");
+        }
+        if(h.getNombreCompleto() == null || h.getNombreCompleto().isBlank() || h.getNombreCompleto().isEmpty()) {
+            throw new ProgramException("Tu Nombre o Apellido esta vacio.");
+        }
+        if(!h.validarCorreo(h.getCorreo()) || h.getCorreo().isBlank() || h.getCorreo().isEmpty()) {
+            throw new ProgramException("El Correo no es valido.");
+        }
+        if(h.getTelefono() == null || !(h.getTelefono().length() == 10 || h.getTelefono().isBlank() || h.getTelefono().isEmpty())) {
+            throw new ProgramException("El Telefono no es valido. (Recuerda que son 10 Digitos.)");
+        }
+        for(Huesped i : huespedes) {
+            if(i.getId().equals(h.getId())) {
+                throw new ProgramException("EL ID YA EXISTE.");
+            }
+        }
+        huespedes.add(h);
+    }
 	
 	public void consultarHuespedes() {
 		if (huespedes.isEmpty()) {
