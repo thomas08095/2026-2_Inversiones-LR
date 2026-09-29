@@ -28,10 +28,9 @@ public class Controller_HUESPED {
         huespedes.add(h);
     }
 	
-	public void consultarHuespedes() {
+	public void consultarHuespedes() throws ProgramException {
 		if (huespedes.isEmpty()) {
-	        v.mostrar("No hay huéspedes registrados actualmente.");
-	        return;
+	        throw new ProgramException("No hay huéspedes registrados actualmente.");
 	    }
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
 		for(Huesped i : huespedes) {

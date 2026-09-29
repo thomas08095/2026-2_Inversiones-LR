@@ -41,7 +41,11 @@ public class Controller {
                     huespedes_REGISTRAR(respuesta);
                     break;
                 case 2:
-                    con_H.consultarHuespedes();
+                    try {
+                        con_H.consultarHuespedes();
+                    } catch (ProgramException e) {
+                        ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
+                    }
                     break;
                 default:
                     System.out.println("GAY");
