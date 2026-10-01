@@ -54,7 +54,7 @@ public class Controller_ALOJAMIENTOS {
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos) {
 			boolean encontrado = true;
-				if(aFILTRO.getCiudadEnum() != a.getCiudadEnum() || aFILTRO.getCiudadEnum() != null) encontrado = false;
+				if(aFILTRO.getCiudadEnum() != a.getCiudadEnum() && aFILTRO.getCiudadEnum() != null) encontrado = false;
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
 				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
