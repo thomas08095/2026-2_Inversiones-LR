@@ -29,18 +29,39 @@ public class Controller_ALOJAMIENTOS {
 	    v.mostrar(txt);
 	}
 	
-	public ArrayList<Alojamiento> buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){
+	public void consultarF(ArrayList<Alojamiento> alo) {
+	    if (alo.isEmpty()) {
+	        v.mostrar("No hay Alojamientos que Cumplan con los Requisitos.\n(o estan ocupados)\nDisculpe las molestias");
+	        return;
+	    }
+	    
+	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
+	    
+	    for(Alojamiento a : alo) {
+	        txt += "\n" +    "||| NOMBRE: " + a.getNombre()  + " |||"
+	             + "\n| CIUDAD: " + a.getCiudadEnum() 
+	             + "                      | DIRECCION: " + a.getDireccion() 
+	             + "				      | PRECIO BASE: " + a.getPrecioBase() + " COP" 
+	             + "                | CAPACIDAD: " + a.getCapacidad() 
+	             + "                | TIPO: "  + a.getTipo() 
+	             + "                | ESTADO: "  + a.getEstado()
+	             + "\n\n-=============================================================================================================================================================-\n";
+	    }
+	    v.mostrar(txt);
+	}
+	
+	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos) {
 			boolean encontrado = true;
-				if(aFILTRO.getCiudadEnum() != a.getCiudadEnum()) encontrado = false;
+				if(aFILTRO.getCiudadEnum() != a.getCiudadEnum() || aFILTRO.getCiudadEnum() != null) encontrado = false;
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
-				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO) encontrado = false;
+				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
 				if(a.getPrecioBase() < precioMIN) encontrado = false;
 				if(encontrado) resultados.add(a);
 		}
-		return resultados;
+		consultarF(resultados);
 	}
 	
 	public void registrarAlojamiento(Alojamiento a) throws ProgramException {
