@@ -33,31 +33,31 @@ public class Reserva {
 		this.estado = estado;
 	}
 	
-	public int calcularNumNoches() {
-		if(this.fechaLlegada == null && this.fechaSalida == null) {
-			return 0;
-		}
-		long noches = ChronoUnit.DAYS.between(this.fechaLlegada, this.fechaSalida);
-		
-		if(noches <= 0) {
-			throw new IllegalArgumentException("La fecha de salida debe ser posterior a la fecha de llegada");
-		}
-		
-		return this.numeroDeNoches;
-	}
-	
-	public void validarCantidadHuespedes() {
-		if(this.numeroHuespedes <= 0) {
-			throw new IllegalArgumentException("El número de huéspedes debe ser mayor que cero");
-		}
-		
-		if(this.alojamiento == null) {
-			throw new IllegalStateException("Debe asignar un alojamiento antes de validar los huéspedes");
-		}
-		
-		if(this.numeroHuespedes > this.alojamiento.getCapacidad()) {
-			throw new IllegalArgumentException("El número de huéspedes supera la capacidad del alojamiento");
-		}
+	public int calcularNumNoches() throws ProgramException {
+        if(this.fechaLlegada == null || this.fechaSalida == null) {
+            throw new ProgramException("Las fechas de llegada y salida no pueden estar vacías.");
+        }
+        long noches = ChronoUnit.DAYS.between(this.fechaLlegada, this.fechaSalida);
+        
+        if(noches <= 0) {
+            throw new ProgramException("La fecha de salida debe ser posterior a la fecha de llegada");
+        }
+        
+        return (int) noches;
+    }
+    
+    public void validarCantidadHuespedes() throws ProgramException {
+        if(this.numeroHuespedes <= 0) {
+            throw new ProgramException("El número de huéspedes debe ser mayor que cero");
+        }
+        
+        if(this.alojamiento == null) {
+            throw new ProgramException("Debe asignar un alojamiento antes de validar los huéspedes");
+        }
+        
+        if(this.numeroHuespedes > this.alojamiento.getCapacidad()) {
+            throw new ProgramException("El número de huéspedes supera la capacidad del alojamiento");
+        }
 	}
 	
 
