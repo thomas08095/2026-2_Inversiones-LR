@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 import co.edu.unbosque.model.*;
+import co.edu.unbosque.model.Alojamiento.EstadoAlojamiento;
 import co.edu.unbosque.view.*;
 
 public class Controller {
@@ -92,10 +93,54 @@ public class Controller {
     }
         
     public static void alojamientos_BUSCAR(int respuesta) {
-        respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_CIUDADES()); 
-        respuesta = ventana.LeerInt(menu.menu_ALOJAMIENTOS_TIPOS());    
-        respuesta = ventana.LeerInt("¿Capacidad Minima?");
-        respuesta = ventana.LeerInt("¿Precio Maximo Por Noche?");
+    	 respuesta = ventana.LeerInt("=== ALOJAMIENTO ===\n"
+         		+ "= ¿Que tipo de Alojamiento le Interesa? =\n"
+         		+ "| 1. CASA\n"
+         		+ "| 2. APARTAMENTO\n"
+         		+ "| 3. CABAÑA\n"); 
+    	 while(respuesta != 1 && respuesta != 2 && respuesta != 3) {
+    		 respuesta = ventana.LeerInt("=== !!CARACTER INVALIDO!! ===\n"
+    	         		+ "= ¿Que tipo de Alojamiento le Interesa? =\n"
+    	         		+ "| 1. CASA\n"
+    	         		+ "| 2. APARTAMENTO\n"
+    	         		+ "| 3. CABAÑA\n"); 
+    	 }
+    	 switch(respuesta) {
+     	case 1:
+     		a = new Casa();
+     		break;
+     	case 2:
+     		a = new Apartamento();
+     		break;
+     	case 3:
+     		a = new Cabaña();
+     		break;
+    	}
+        respuesta = ventana.LeerInt("=== ALOJAMIENTO ===\n"
+        		+ "= ¿En que Ciudad te interesa? =\n"
+        		+ "| 1. BOGOTA\n"
+        		+ "| 2. MEDELLIN\n"
+        		+ "| 3. BARRACABERMEJA\n"
+        		+ "| // Si se Ingresa cualquier otro dato, se tomara como si no importara este filtro."); 
+        switch(respuesta) {
+        	case 1:
+        		a.setCiudadEnum(Alojamiento.Ciudad.BOGOTA);
+        		break;
+        	case 2:
+        		a.setCiudadEnum(Alojamiento.Ciudad.MEDELLIN);
+        		break;
+        	case 3:
+        		a.setCiudadEnum(Alojamiento.Ciudad.BARRACABERMEJA);
+        		break;
+        	default:
+        		a.setCiudadEnum(null);
+        		break;
+        }
+        int personMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
+        		+ "= ¿Que Capacidad Minima de Personas Busca? =\n");  
+        int precioMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
+        		+ "= ¿Que Precio Minimo busca? =\n");
+        con_A.buscarFiltro(a, personMIN, precioMIN);
     }
         
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
