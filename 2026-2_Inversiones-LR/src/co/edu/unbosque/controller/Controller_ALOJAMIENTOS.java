@@ -14,19 +14,18 @@ public class Controller_ALOJAMIENTOS {
 	        return;
 	    }
 	    
-	    String txt = "||=================================== LISTA DE ALOJAMIENTOS ===============================||\n";
+	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
 	    
 	    for(Alojamiento a : alojamientos) {
 	        txt += "\n" +    "||| NOMBRE: " + a.getNombre()  + " |||"
 	             + "\n| CIUDAD: " + a.getCiudadEnum() 
 	             + "                      | DIRECCION: " + a.getDireccion() 
-	             + "\n| PRECIO BASE: " + a.getPrecioBase() + " COP" 
+	             + "				      | PRECIO BASE: " + a.getPrecioBase() + " COP" 
 	             + "                | CAPACIDAD: " + a.getCapacidad() 
 	             + "                | TIPO: "  + a.getTipo() 
 	             + "                | ESTADO: "  + a.getEstado()
-	             + "\n\n-==========================================================================================-\n";
+	             + "\n\n-=============================================================================================================================================================-\n";
 	    }
-	    
 	    v.mostrar(txt);
 	}
 	

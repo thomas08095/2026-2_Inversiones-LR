@@ -112,9 +112,6 @@ public abstract class Alojamiento {
 	public enum Ciudad {
         BOGOTA,
         MEDELLIN,
-        CUCUTA,
-        CARACAS,
-        BUENOS_AIRES,
         BARRACABERMEJA
     }
     

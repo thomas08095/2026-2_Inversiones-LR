@@ -16,10 +16,26 @@ public class Controller {
         boolean end = false;
         int respuesta = 0;
         a = new Casa("1234567890", "CASA BLANCA DE DOS PISOS", "Calle 160b #10-55", 
-                4, 5_000_000, "Casa", Alojamiento.Ciudad.BOGOTA, Alojamiento.EstadoAlojamiento.ACTIVO);
+                4, 500_000, "Casa", Alojamiento.Ciudad.BOGOTA, Alojamiento.EstadoAlojamiento.ACTIVO);
         con_A.registrarAlojamiento(a);
         a = new Apartamento("0987654321", "APARTAMENTO PEQUEÑO PISO 4, TORRE 6", "Carrera 45 # 53-12", 
-                2, 1_250_000, "Apartamento", Alojamiento.Ciudad.MEDELLIN, Alojamiento.EstadoAlojamiento.ACTIVO);
+                2, 250_000, "Apartamento", Alojamiento.Ciudad.MEDELLIN, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        a = new Cabaña("2244556688", "CABAÑA GRANDE DE MADERA MODERNA", "Cra. 22 #45", 
+                6, 150_000, "Cabaña", Alojamiento.Ciudad.BARRACABERMEJA, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        
+        a = new Casa("874", "CASA GRANDE DE 3 PISOS CON PISCINA ", "Cra 72bis #24d-50", 
+                8, 900_000, "Casa", Alojamiento.Ciudad.BOGOTA, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        a = new Apartamento("676767676767", "APARTA-STUDIO", "Calle 49 # 24-36, Barrio Colombia", 
+                3, 300_000, "Apartamento", Alojamiento.Ciudad.BARRACABERMEJA, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        a = new Cabaña("000000000", "CABAÑA DIMINUTA", "Calle 10 # 43A-31", 
+                1, 100_000, "Cabaña", Alojamiento.Ciudad.MEDELLIN, Alojamiento.EstadoAlojamiento.ACTIVO);
+        con_A.registrarAlojamiento(a);
+        a = new Casa("99999999", "CASA DE DOS PISOS MEDIANA", "Carrera 35 # 7-52", 
+                3, 240_000, "Casa", Alojamiento.Ciudad.MEDELLIN, Alojamiento.EstadoAlojamiento.ACTIVO);
         con_A.registrarAlojamiento(a);
         while(!end) {
             respuesta = ventana.LeerInt(Menu.menu_PRINCIPAL());
