@@ -2,16 +2,16 @@ package co.edu.unbosque.controller;
 import java.util.ArrayList;
 import co.edu.unbosque.model.Alojamiento;
 import co.edu.unbosque.model.Huesped;
+import co.edu.unbosque.model.ProgramException;
 import co.edu.unbosque.view.*;
 public class Controller_ALOJAMIENTOS {
 
 	ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	VentanaEmergente v = new VentanaEmergente();
 	
-	public void consultar() {
+	public void consultar() throws ProgramException {
 	    if (alojamientos.isEmpty()) {
-	        v.mostrar("No hay Alojamientos registrados actualmente.");
-	        return;
+	        throw new ProgramException("No hay Alojamientos registrados actualmente.");
 	    }
 	    
 	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
@@ -43,30 +43,24 @@ public class Controller_ALOJAMIENTOS {
 		return resultados;
 	}
 	
-	public void registrarAlojamiento(Alojamiento a){
-		if (a.getId().isBlank() || a.getId().isEmpty() || a.getId() == null ) {
-			v.mostrarERROR("Lo Sentimos.\n---", "ERROR: ---");
-			return;
-		}
-		if(a.getNombre() == null || a.getNombre().isBlank()) {
-			v.mostrarERROR("Lo Sentimos.\n---", "ERROR: ---");
-			return;
-		}
-		for (Alojamiento al : alojamientos) {
+	public void registrarAlojamiento(Alojamiento a) throws ProgramException {
+        if (a.getId() == null || a.getId().isBlank() || a.getId().isEmpty()) {
+            throw new ProgramException("El ID del alojamiento está vacío.");
+        }
+        if(a.getNombre() == null || a.getNombre().isBlank()) {
+            throw new ProgramException("El nombre del alojamiento está vacío.");
+        }
+        for (Alojamiento al : alojamientos) {
             if (al.getId().equals(a.getId())) {
-            	v.mostrarERROR("Lo Sentimos.\nEste ID ya EXISTE", "ERROR: ID YA EXISTENTE");
-            	return;
+                throw new ProgramException("Este ID ya EXISTE.");
             }
         }
-		if (a.getCapacidad() <= 0) {
-			v.mostrarERROR("Lo Sentimos.\nMODO VAGINA: ACTIVADO", "ERROR: CAPACIDAD INVALIDA");
-        	return;
-
+        if (a.getCapacidad() <= 0) {
+            throw new ProgramException("La capacidad debe ser mayor a cero.");
         }
         if (a.getPrecioBase() <= 0) {
-        	v.mostrarERROR("Lo Sentimos.\nMODO VAGINA: ACTIVADO", "ERROR: PRECIO BASE INVALIDO");
-        	return;
+            throw new ProgramException("El precio base debe ser mayor a cero.");
         }
-        alojamientos.add(a);		
-	}
+        alojamientos.add(a);        
+    }
 }
