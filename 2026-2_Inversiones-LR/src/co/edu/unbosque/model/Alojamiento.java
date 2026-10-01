@@ -106,7 +106,7 @@ public abstract class Alojamiento {
 	
 
 	public enum EstadoAlojamiento {
-		ACTIVO, CANCELADO
+		ACTIVO, OCUPADO, CANCELADO
 	}
 	
 	public enum Ciudad {
