@@ -1,5 +1,7 @@
 package co.edu.unbosque.persistence;
 
+import co.edu.unbosque.model.*;
+
 import co.edu.unbosque.model.ProgramException;
 
 public class ReservaDAO implements DAO{
