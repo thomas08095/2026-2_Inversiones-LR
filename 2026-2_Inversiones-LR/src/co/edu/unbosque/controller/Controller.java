@@ -46,7 +46,7 @@ public class Controller {
                     break;
                 case 2:
                      try {
-                         con_H.consultarHuespedes();
+                        con_H.consultarHuespedes();
                      } catch (ProgramException e) {
                          ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
                      }
@@ -158,7 +158,7 @@ public class Controller {
         
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
         try {
-            con_A.consultar();
+            ventana.mostrar(con_H.consultarHuespedes());
         } catch (ProgramException e) {
             ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
         }
