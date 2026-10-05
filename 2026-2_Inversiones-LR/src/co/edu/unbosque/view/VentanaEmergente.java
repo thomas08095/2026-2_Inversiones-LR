@@ -1,5 +1,7 @@
 package co.edu.unbosque.view;
 
+import java.time.LocalDate;
+
 import javax.swing.JOptionPane;
 
 public class VentanaEmergente {
@@ -49,6 +51,12 @@ public class VentanaEmergente {
 	public static String LeerConComboBox(String mensaje, String titulo, String[] opciones) {
 		String seleccion = "";
 		return seleccion;
+	}
+	
+	public static LocalDate LeerFecha(String txt) {
+		String aux = JOptionPane.showInputDialog(txt);
+		LocalDate fecha = LocalDate.parse(aux);
+		return fecha;
 	}
 
 }
