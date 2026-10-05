@@ -1,8 +1,13 @@
 package co.edu.unbosque.persistence;
 
+import co.edu.unbosque.model.ProgramException;
+
 public class ReservaDAO implements DAO{
 
-    public void crear(Reserva reserva) throws ProgramException {
-    }
+	@Override
+	public void crear(Object obj) throws ProgramException {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
