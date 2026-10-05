@@ -2,6 +2,8 @@ package co.edu.unbosque.controller;
 import java.util.ArrayList;
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.view.*;
+
+
 public class Controller_HUESPED {
 	
 	ArrayList<Huesped> huespedes = new ArrayList<Huesped>();
