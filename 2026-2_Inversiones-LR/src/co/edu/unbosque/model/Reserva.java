@@ -33,16 +33,24 @@ public class Reserva {
 		this.estado = estado;
 	}
 	
+	public void validarFechas() throws ProgramException {
+		if(this.fechaLlegada == null || this.fechaSalida == null) {
+	        throw new ProgramException("Las fechas de llegada y salida no pueden estar vacías.");
+	    }
+		
+		LocalDate hoy = LocalDate.now();
+	    if(this.fechaLlegada.isBefore(hoy)) {
+	        throw new ProgramException("La fecha de llegada no puede ser anterior a la fecha actual.");
+	    }
+	    
+	    if(!this.fechaSalida.isAfter(this.fechaLlegada)) {
+	        throw new ProgramException("La fecha de salida debe ser estrictamente posterior a la fecha de llegada.");
+	    }
+	}
+	
 	public int calcularNumNoches() throws ProgramException {
-        if(this.fechaLlegada == null || this.fechaSalida == null) {
-            throw new ProgramException("Las fechas de llegada y salida no pueden estar vacías.");
-        }
+		validarFechas();
         long noches = ChronoUnit.DAYS.between(this.fechaLlegada, this.fechaSalida);
-        
-        if(noches <= 0) {
-            throw new ProgramException("La fecha de salida debe ser posterior a la fecha de llegada");
-        }
-        
         return (int) noches;
     }
     
