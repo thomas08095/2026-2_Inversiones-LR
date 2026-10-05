@@ -53,7 +53,7 @@ public class VentanaEmergente {
 		return seleccion;
 	}
 	
-	public static LocalDate LeerFecha(String txt) {
+	public LocalDate LeerFecha(String txt) {
 		String aux = JOptionPane.showInputDialog(txt);
 		LocalDate fecha = LocalDate.parse(aux);
 		return fecha;

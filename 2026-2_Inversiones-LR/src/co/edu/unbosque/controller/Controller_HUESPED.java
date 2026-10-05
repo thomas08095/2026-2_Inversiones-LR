@@ -19,7 +19,7 @@ public class Controller_HUESPED {
         if(!h.validarCorreo(h.getCorreo()) || h.getCorreo().isBlank() || h.getCorreo().isEmpty()) {
             throw new ProgramException("El Correo no es valido.");
         }
-        if(h.getTelefono() == null || !(h.getTelefono().length() == 10 || h.getTelefono().isBlank() || h.getTelefono().isEmpty())) {
+        if(h.getTelefono() == null || !h.getTelefono().matches("\\d{10}")) {
             throw new ProgramException("El Telefono no es valido. (Recuerda que son 10 Digitos.)");
         }
         for(Huesped i : huespedes) {
@@ -29,6 +29,8 @@ public class Controller_HUESPED {
         }
         huespedes.add(h);
     }
+	
+	
 	
 	public String consultarHuespedes() throws ProgramException {
 		if (huespedes.isEmpty()) {
@@ -41,6 +43,27 @@ public class Controller_HUESPED {
 			+ "\n-------------------------------------------------------\n";
 		}
 		return txt;
+	}
+	
+	public String ID_MostrarHuespedes() throws ProgramException {
+		if (huespedes.isEmpty()) {
+	        throw new ProgramException("No hay huéspedes registrados actualmente.");
+	    }
+		String txt = "||====== LISTA DE HUESPEDES ======||\n";
+		for(Huesped h : huespedes) {
+				txt +=("\n| NOMBRE: " + h.getNombreCompleto()
+				+ "              | ID: " + h.getId() + "\n-------------------------------------------------------\n");
+		}
+		return txt;
+	}
+	
+	public Huesped ID_buscarHuesped(String id) throws ProgramException {
+		for(Huesped h : huespedes) {
+			if(h.getId().equals(id)) {
+				return h;
+			}
+		}
+		throw new ProgramException("No existe un huesped registrado con el ID: " + id);
 	}
 
 }

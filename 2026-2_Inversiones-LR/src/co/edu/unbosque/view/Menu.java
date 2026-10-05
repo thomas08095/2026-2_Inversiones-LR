@@ -20,7 +20,6 @@ public class Menu {
 		txt = ("||====== ALOJAMIENTOS =======||\n\n"
 				+ "| 1. Consultar Alojamientos.\n"
 				+ "| 2. Buscar Alojamientos.\n"
-				+ "| 3. Consultar Detalles de Alojamientos.\n\n"
 				+ "||=============================||\n");
 		return txt;
 	}
@@ -67,7 +66,6 @@ public class Menu {
 				+ "| 1. Crear Reserva.\n"
 				+ "| 2. Consultar Detalles de Reserva.\n"
 				+ "| 3. Cancelar Reserva.\n\n"
-				+ "| 4. Matar a Henry (La paz nunca fue una opción) \n\n"
 				+ "||=============================||\n");
 		return txt;
 	}

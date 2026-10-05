@@ -1,4 +1,6 @@
 package co.edu.unbosque.controller;
+import java.time.LocalDate;
+
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.view.*;
 
@@ -58,6 +60,24 @@ public class Controller {
                 break;
             case 3:
                 respuesta = ventana.LeerInt(menu.menu_RESERVAS());
+                switch(respuesta) {
+                case 1:
+                	try {
+						reservaCREAR(respuesta);
+					} catch (ProgramException e) {
+						e.printStackTrace();
+					}
+                	break;
+                case 2:
+                	
+                	break;
+                case 3:
+                	reservaCANCELAR(respuesta);
+                	break;
+                default:
+                	System.out.println("GAY");
+                	break;
+                }
                 break;
             case 4:
                 break;
@@ -153,7 +173,7 @@ public class Controller {
         		+ "= ¿Que Capacidad Minima de Personas Busca? =\n");  
         int precioMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
         		+ "= ¿Que Precio Minimo busca? =\n");
-        con_A.buscarFiltro(a, personMIN, precioMIN);
+        con_A.buscarFiltro(a, personMIN, precioMIN,1);
     }
         
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
@@ -220,4 +240,70 @@ public class Controller {
             }
         }
     }   
+    public static void reservaCREAR(int respuesta) throws ProgramException {
+    	boolean end = false;
+    	while(!end) {
+    	 Reserva r = new Reserva();
+    	 Huesped h = new Huesped();
+    	 Alojamiento a;
+    	 
+    	 String str = ventana.LeerString("||====== RESERVA =======||\n\n"
+                 + "| 1. Ingrese el Identificador de la Reserva.\n\n"
+                 + "||=============================||\n");
+         r.setId(str);
+
+         str = ventana.LeerString(
+        		 con_H.ID_MostrarHuespedes() 
+                 + "| Ingrese el Identificador del Huesped.\n\n"
+                 + "||=============================||\n");
+
+         h = con_H.ID_buscarHuesped(str);
+         
+         str = ventana.LeerString("||====== ALOJAMIENTO =======||\n\n" + con_A.ID_MostrarAlojamiento() + 
+        		 "||====================||\n"
+                 + "| Ingrese el Identificador del Alojamiento.\n\n"
+                 + "||=============================||\n");
+         a = con_A.ID_buscarAlojamiento(str);
+         
+         LocalDate ld =  ventana.LeerFecha("||====== FECHA DE LLEGADA =======||\n\n"
+                 + "| Ingrese la Fecha de Llegada. (AAAA-MM-DD)\n\n"
+                 + "||=============================||\n");
+         r.setFechaLlegada(ld);
+         
+         ld = ventana.LeerFecha("||====== FECHA DE SALIDA =======||\n\n"
+                 + "|  Ingrese la Fecha de Salida. (AAAA-MM-DD)\n\n");
+         r.setFechaSalida(ld);
+         
+         respuesta = ventana.LeerInt("||====== NUMERO DE HUESPEDES =======||\n\n"
+                 + "| 1. Ingrese el Numero de Huespedes. (Capacidad Maxima: " + a.getCapacidad() + ")\n\n"
+                 + "||=============================||\n");
+         r.setNumeroHuespedes(respuesta);
+         
+         
+         r.setAlojamiento(a);
+         r.setHuesped(h);
+         int noches = r.calcularNumNoches();
+         double total = a.calcularValorReserva(noches);
+         
+         respuesta = ventana.preguntarSiNo("||====== COMFIRMACION =======||\n\n"
+                 + "| Estas de Acuerdo con los siguientes datos?\n"
+                 + "| ID RESERVA: " + r.getId() + "\n"
+                 + "| HUESPED: " + h.getNombreCompleto() + "\n"
+                 + "| ALOJAMIENTO: " + a.getNombre() + " (" + a.getTipo() + ")\n"
+                 + "| LLEGADA: " + r.getFechaLlegada() + "\n"
+                 + "| SALIDA: " + r.getFechaSalida() + "\n"
+                 + "| NOCHES: " + noches + "\n"
+                 + "| HUESPEDES: " + r.getNumeroHuespedes() + "\n"
+                 + "| VALOR TOTAL: " + total + " COP\n"
+                 + "||=============================||\n", "COMFIRMAR");
+         if(respuesta == 0) {
+             Controller_RESERVAS.crearRESERVA(r, h, a);
+             ventana.mostrar("Se Creo la Reserva con Exito.");
+             end = true;
+         } else ventana.mostrar("Se Registrara la Reserva devuelta.");
+      }
+    }
+    public static void reservaCANCELAR(int respuesta) {
+    	
+    }
 }

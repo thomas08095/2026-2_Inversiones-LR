@@ -17,7 +17,7 @@ public class Controller_ALOJAMIENTOS {
 	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
 	    
 	    for(Alojamiento a : alojamientos) {
-	        txt += "\n" +    "||| NOMBRE: " + a.getNombre()  + " |||"
+	        txt += "\n" +    "||| ID: " + a.getId() + " ||| NOMBRE: " + a.getNombre()  + " |||"
 	             + "\n| CIUDAD: " + a.getCiudadEnum() 
 	             + "                      | DIRECCION: " + a.getDireccion() 
 	             + "				      | PRECIO BASE: " + a.getPrecioBase() + " COP" 
@@ -37,7 +37,7 @@ public class Controller_ALOJAMIENTOS {
 	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
 	    
 	    for(Alojamiento a : alo) {
-	        txt += "\n" +    "||| NOMBRE: " + a.getNombre()  + " |||"
+	        txt += "\n" +    "||| ID: " + a.getId() + " ||| NOMBRE: " + a.getNombre()  + " |||"
 	             + "\n| CIUDAD: " + a.getCiudadEnum() 
 	             + "                      | DIRECCION: " + a.getDireccion() 
 	             + "				      | PRECIO BASE: " + a.getPrecioBase() + " COP" 
@@ -49,7 +49,14 @@ public class Controller_ALOJAMIENTOS {
 	    return txt;
 	}
 	
-	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){
+	public ArrayList<Alojamiento> consultarF_RESERVAS(ArrayList<Alojamiento> alo) {
+	    if (alo.isEmpty()) {
+	        v.mostrarERROR("No hay Alojamientos que Cumplan con los Requisitos.\n(o estan ocupados)\nDisculpe las molestias", null);
+	    }
+	    return alo;
+	}
+	
+	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMAX,int selecc){
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos) {
 			boolean encontrado = true;
@@ -57,10 +64,32 @@ public class Controller_ALOJAMIENTOS {
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
 				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
-				if(a.getPrecioBase() < precioMIN) encontrado = false;
+				if(precioMAX > 0 && a.getPrecioBase() > precioMAX) encontrado = false;
 				if(encontrado) resultados.add(a);
 		}
-		consultarF(resultados);
+		if(selecc == 1) v.mostrar(consultarF(resultados));
+		else consultarF_RESERVAS(resultados);
+	}
+	
+	public String ID_MostrarAlojamiento() throws ProgramException {
+		if (alojamientos.isEmpty()) {
+	        throw new ProgramException("No hay huéspedes registrados actualmente.");
+	    }
+		String txt = "||====== LISTA DE ALOJAMIENTOS ======||\n";
+		for(Alojamiento a : alojamientos) {
+				txt +=("\n| NOMBRE: " + a.getNombre()
+				+ "              | ID: " + a.getId() + "\n-------------------------------------------------------\n");
+		}
+		return txt;
+	}
+	
+	public Alojamiento ID_buscarAlojamiento(String id) throws ProgramException {
+		for(Alojamiento a : alojamientos) {
+			if(a.getId().equals(id)) {
+				return a;
+			}
+		}
+		throw new ProgramException("No existe un alojamiento registrado con el ID: " + id);
 	}
 	
 	public void registrarAlojamiento(Alojamiento a) throws ProgramException {
@@ -83,4 +112,6 @@ public class Controller_ALOJAMIENTOS {
         }
         alojamientos.add(a);        
     }
+	
 }
+ 

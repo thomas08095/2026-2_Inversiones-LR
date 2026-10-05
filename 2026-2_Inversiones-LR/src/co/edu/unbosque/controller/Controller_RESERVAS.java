@@ -4,51 +4,56 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Alojamiento;
 import co.edu.unbosque.model.Huesped;
+import co.edu.unbosque.model.ProgramException;
 import co.edu.unbosque.model.Reserva;
-import co.edu.unbosque.view.VentanaEmergente;
 
 public class Controller_RESERVAS {
 	
 	static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
-	static VentanaEmergente v = new VentanaEmergente();
-    private static Controller_HUESPED con_H = new Controller_HUESPED();
-    private static Controller_ALOJAMIENTOS con_A = new Controller_ALOJAMIENTOS();
     
-	public static void crearRESERVA(Reserva r,Huesped h, Alojamiento a) {
-		Reserva r_FINAL = new Reserva();
-		double valorBASE = 0;
-		double valorFINAL = 0;
+	public static void crearRESERVA(Reserva r,Huesped h, Alojamiento a) throws ProgramException {
 		
 		if (r.getId() == null || r.getId().isBlank()) {
-            v.mostrarERROR("El identificador de la reserva es obligatorio.", "ERROR"); 
-            return;
+            throw new ProgramException("El identificador de la reserva es obligatorio.");
         }
         for (Reserva rAUX : reservas) {
             if (r.getId().equals(rAUX.getId())) {
-            	v.mostrarERROR("Ya existe una reserva con id: " + rAUX.getId(), "ERROR");
-            	 return;
+            	throw new ProgramException("Ya existe una reserva con id: " + rAUX.getId());
             }
         }
-        
+        if (h == null) {
+        	throw new ProgramException("La reserva debe estar asociada a un huesped registrado.");
+        }
+        if (a == null) {
+        	throw new ProgramException("La reserva debe estar asociada a un alojamiento registrado.");
+        }
         if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO){
-        	v.mostrarERROR("ALOJAMIENTO OCUPADO O CANCELADO","ERROR");
-        	return;
+        	throw new ProgramException("ALOJAMIENTO OCUPADO O CANCELADO");
         }
-        else if(r.getNumeroDeNoches() <= 0) {
-        	v.mostrarERROR("NUMERO DE NOCHES INVALIDAS","ERROR");
-        }
-        else if(r.getNumeroHuespedes() <= 0) {
-        	v.mostrarERROR("NUMERO DE HUESPEDES INVALIDAS","ERROR");
-        }
-        else if (r.getNumeroHuespedes() > a.getCapacidad()) {
-        	v.mostrarERROR("El numero de huespedes supera la capacidad del alojamiento.","ERROR");
-        }
+        
+        r.setHuesped(h);
+        r.setAlojamiento(a);
+        r.validarCantidadHuespedes();
+        
+        int noches = r.calcularNumNoches();
+        r.setNumeroDeNoches(noches);
+        r.setValorTotal(a.calcularValorReserva(noches));
+        r.setEstado(Reserva.EstadoReserva.CONFIRMADA);
         
 		reservas.add(r);
 	}
 	
-	public static void cancelarRESERVA(Reserva r) {
-		
+	public static void cancelarRESERVA(String id) throws ProgramException {
+		for (Reserva r : reservas) {
+            if (r.getId().equals(id)) {
+                if (r.getEstado() == Reserva.EstadoReserva.CANCELADA) {
+                    throw new ProgramException("La reserva " + id + " ya se encuentra cancelada.");
+                }
+                r.setEstado(Reserva.EstadoReserva.CANCELADA);
+                return;
+            }
+        }
+		throw new ProgramException("No existe una reserva con el ID: " + id);
 	}
 
 }
