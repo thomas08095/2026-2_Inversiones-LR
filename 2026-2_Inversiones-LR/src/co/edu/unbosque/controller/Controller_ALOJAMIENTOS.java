@@ -56,7 +56,7 @@ public class Controller_ALOJAMIENTOS {
 	    return alo;
 	}
 	
-	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMAX,int selecc){
+	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN,int selecc){
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos) {
 			boolean encontrado = true;
@@ -64,7 +64,7 @@ public class Controller_ALOJAMIENTOS {
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
 				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
-				if(precioMAX > 0 && a.getPrecioBase() > precioMAX) encontrado = false;
+				if(precioMIN > 0 && a.getPrecioBase() < precioMIN) encontrado = false;
 				if(encontrado) resultados.add(a);
 		}
 		if(selecc == 1) v.mostrar(consultarF(resultados));

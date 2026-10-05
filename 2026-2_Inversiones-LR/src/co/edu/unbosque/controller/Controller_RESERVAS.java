@@ -39,6 +39,7 @@ public class Controller_RESERVAS {
         r.setNumeroDeNoches(noches);
         r.setValorTotal(a.calcularValorReserva(noches));
         r.setEstado(Reserva.EstadoReserva.CONFIRMADA);
+        a.setEstado(Alojamiento.EstadoAlojamiento.OCUPADO);
         
 		reservas.add(r);
 	}

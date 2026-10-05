@@ -62,12 +62,12 @@ public class Controller {
                 respuesta = ventana.LeerInt(menu.menu_RESERVAS());
                 switch(respuesta) {
                 case 1:
-                	try {
-						reservaCREAR(respuesta);
-					} catch (ProgramException e) {
-						e.printStackTrace();
-					}
-                	break;
+                    try {
+                        reservaCREAR(respuesta);
+                    } catch (ProgramException e) {
+                        ventana.mostrarERROR("No se pudo crear la reserva:\n" + e.getMessage(), "ERROR DE RESERVA");
+                    }
+                    break;
                 case 2:
                 	
                 	break;
@@ -243,6 +243,8 @@ public class Controller {
     public static void reservaCREAR(int respuesta) throws ProgramException {
     	boolean end = false;
     	while(!end) {
+    	
+    	try {
     	 Reserva r = new Reserva();
     	 Huesped h = new Huesped();
     	 Alojamiento a;
@@ -250,6 +252,7 @@ public class Controller {
     	 String str = ventana.LeerString("||====== RESERVA =======||\n\n"
                  + "| 1. Ingrese el Identificador de la Reserva.\n\n"
                  + "||=============================||\n");
+    	 if (str == null) return;
          r.setId(str);
 
          str = ventana.LeerString(
@@ -301,6 +304,10 @@ public class Controller {
              ventana.mostrar("Se Creo la Reserva con Exito.");
              end = true;
          } else ventana.mostrar("Se Registrara la Reserva devuelta.");
+         
+    	} catch (ProgramException e) {
+            ventana.mostrarERROR("Error en la reserva:\n" + e.getMessage(), "DATOS INVÁLIDOS");
+        }
       }
     }
     public static void reservaCANCELAR(int respuesta) {
