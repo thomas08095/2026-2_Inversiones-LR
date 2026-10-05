@@ -1,14 +1,15 @@
 package co.edu.unbosque.persistence;
 
 import co.edu.unbosque.model.*;
-import java.util.ArrayList;
+
+import co.edu.unbosque.model.ProgramException;
 
 public class AlojamientoDAO implements DAO{
-    
-    ArrayList<Huesped> huespedes = new ArrayList<Huesped>();
 
-
-    public void crear(Alojamiento alojamiento) throws ProgramException {
-    }
+	@Override
+	public void crear(Object obj) throws ProgramException {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
