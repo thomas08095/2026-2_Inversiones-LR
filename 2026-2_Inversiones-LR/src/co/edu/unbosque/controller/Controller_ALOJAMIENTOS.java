@@ -9,7 +9,7 @@ public class Controller_ALOJAMIENTOS {
 	ArrayList<Alojamiento> alojamientos = new ArrayList<Alojamiento>();
 	VentanaEmergente v = new VentanaEmergente();
 	
-	public void consultar() throws ProgramException {
+	public String consultar() throws ProgramException {
 	    if (alojamientos.isEmpty()) {
 	        throw new ProgramException("No hay Alojamientos registrados actualmente.");
 	    }
@@ -26,13 +26,12 @@ public class Controller_ALOJAMIENTOS {
 	             + "                | ESTADO: "  + a.getEstado()
 	             + "\n\n-=============================================================================================================================================================-\n";
 	    }
-	    v.mostrar(txt);
+	    return txt;
 	}
 	
-	public void consultarF(ArrayList<Alojamiento> alo) {
+	public String consultarF(ArrayList<Alojamiento> alo) {
 	    if (alo.isEmpty()) {
-	        v.mostrar("No hay Alojamientos que Cumplan con los Requisitos.\n(o estan ocupados)\nDisculpe las molestias");
-	        return;
+	        return "No hay Alojamientos que Cumplan con los Requisitos.\n(o estan ocupados)\nDisculpe las molestias";
 	    }
 	    
 	    String txt = "||================================================================== LISTA DE ALOJAMIENTOS ==============================================================||\n";
@@ -47,7 +46,7 @@ public class Controller_ALOJAMIENTOS {
 	             + "                | ESTADO: "  + a.getEstado()
 	             + "\n\n-=============================================================================================================================================================-\n";
 	    }
-	    v.mostrar(txt);
+	    return txt;
 	}
 	
 	public void buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN){

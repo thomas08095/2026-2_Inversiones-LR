@@ -30,7 +30,7 @@ public class Controller_HUESPED {
         huespedes.add(h);
     }
 	
-	public void consultarHuespedes() throws ProgramException {
+	public String consultarHuespedes() throws ProgramException {
 		if (huespedes.isEmpty()) {
 	        throw new ProgramException("No hay huéspedes registrados actualmente.");
 	    }
@@ -40,7 +40,7 @@ public class Controller_HUESPED {
 			+ "\n| ID: " + i.getId() + "\n| CORREO: " + i.getCorreo() + "\n| TELEFONO: " + i.getTelefono()
 			+ "\n-------------------------------------------------------\n";
 		}
-		v.mostrar(txt);
+		return txt;
 	}
 
 }
