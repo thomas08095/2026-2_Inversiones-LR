@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 import java.time.LocalDate;
 
 import co.edu.unbosque.model.*;
+import co.edu.unbosque.persistence.Reporte;
 import co.edu.unbosque.view.*;
 
 public class Controller {
@@ -80,6 +81,7 @@ public class Controller {
                 }
                 break;
             case 4:
+            	generarREPORTES();
                 break;
             case 5:
                 end = true;
@@ -316,5 +318,21 @@ public class Controller {
     }
     public static void reservaCANCELAR(int respuesta) {
     	
+    }
+    
+    public static void generarREPORTES() {
+        try {
+            Reporte reporte = new Reporte();
+            
+            String infoAlojamientos = con_A.consultar();
+            reporte.generarReporteTxt("Reporte_Alojamientos", infoAlojamientos);
+            
+            String infoHuespedes = con_H.consultarHuespedes();
+            reporte.generarReporteTxt("Reporte_Huespedes", infoHuespedes);
+            
+        } 
+        catch (ProgramException e) {
+            ventana.mostrarERROR("No se pudieron generar los reportes:\n" + e.getMessage(), "ERROR DE REPORTES");
+        }
     }
 }
