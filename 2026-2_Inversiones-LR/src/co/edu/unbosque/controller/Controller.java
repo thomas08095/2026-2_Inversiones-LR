@@ -30,10 +30,10 @@ public class Controller {
                 
                 switch(respuesta) {
                 case 1: 
-                    alojamientos_BUSCAR(respuesta);
+                	alojamientos_CONSULTAR_SINFILTROS(respuesta);
                     break;
                 case 2:
-                    alojamientos_CONSULTAR_SINFILTROS(respuesta);
+                    alojamientos_BUSCAR(respuesta);
                     break;
                 default:
                     System.out.println("GAY");
