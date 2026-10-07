@@ -26,6 +26,7 @@ public class Huesped {
     	}
     	else return false;
     }
+    
     public void setId(String id) {
         this.id = id;
     }
