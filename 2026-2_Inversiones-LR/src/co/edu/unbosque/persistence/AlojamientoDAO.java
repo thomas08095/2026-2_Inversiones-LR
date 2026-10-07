@@ -16,9 +16,10 @@ public class AlojamientoDAO implements DAO<Alojamiento> {
     @Override
     public Alojamiento buscarPorId(String id) throws ProgramException {
         for (Alojamiento a : alojamientos) {
-            if (a.getId().equals(id)) 
+            if (a.getId().equals(id)) { 
+            	return a;
+            }
 				
-				return a;
         }
         throw new ProgramException("No existe un alojamiento con ese ID.");
     }
