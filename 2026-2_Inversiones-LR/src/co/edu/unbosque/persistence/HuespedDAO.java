@@ -22,8 +22,15 @@ public class HuespedDAO implements DAO<Huesped> {
         }
         throw new ProgramException("No existe un huesped con ese ID.");
     }
+     
+     
 
-    public void eliminar(String id) throws ProgramException {
+	@Override
+	public List<Huesped> darLista() {
+		return huespedes;
+	}
+
+	public void eliminar(String id) throws ProgramException {
         for (int i = 0; i < huespedes.size(); i++) {
             if (huespedes.get(i).getId().equals(id)) {
                 huespedes.remove(i);

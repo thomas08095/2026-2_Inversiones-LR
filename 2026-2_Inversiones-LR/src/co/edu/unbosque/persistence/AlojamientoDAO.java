@@ -21,8 +21,15 @@ public class AlojamientoDAO implements DAO<Alojamiento> {
         }
         throw new ProgramException("No existe un alojamiento con ese ID.");
     }
+    
+    
 
     @Override
+	public List<Alojamiento> darLista() {
+		return alojamientos;
+	}
+
+	@Override
     public void eliminar(String id) throws ProgramException {
         for (int i = 0; i < alojamientos.size(); i++) {
             if (alojamientos.get(i).getId().equals(id)) {

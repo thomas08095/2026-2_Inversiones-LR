@@ -22,7 +22,13 @@ public class ReservaDAO implements DAO<Reserva> {
         }
         throw new ProgramException("No existe una reserva con ese ID.");
     }
+    
     @Override
+	public List<Reserva> darLista() {
+		return reservas;
+	}
+
+	@Override
     public void eliminar(String id) throws ProgramException {
         throw new ProgramException("Las reservas no se eliminan, se cancelan.");
     }

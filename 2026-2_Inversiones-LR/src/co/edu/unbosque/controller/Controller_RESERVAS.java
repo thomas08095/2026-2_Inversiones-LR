@@ -1,22 +1,22 @@
 package co.edu.unbosque.controller;
 
-import java.util.ArrayList;
 
 import co.edu.unbosque.model.Alojamiento;
 import co.edu.unbosque.model.Huesped;
 import co.edu.unbosque.model.ProgramException;
 import co.edu.unbosque.model.Reserva;
+import co.edu.unbosque.persistence.ReservaDAO;
 
 public class Controller_RESERVAS {
 	
-	static ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	static protected ReservaDAO reservas = new ReservaDAO();
     
 	public static void crearRESERVA(Reserva r,Huesped h, Alojamiento a) throws ProgramException {
 		
 		if (r.getId() == null || r.getId().isBlank()) {
             throw new ProgramException("El identificador de la reserva es obligatorio.");
         }
-        for (Reserva rAUX : reservas) {
+        for (Reserva rAUX : reservas.darLista()) {
             if (r.getId().equals(rAUX.getId())) {
             	throw new ProgramException("Ya existe una reserva con id: " + rAUX.getId());
             }
@@ -41,20 +41,11 @@ public class Controller_RESERVAS {
         r.setEstado(Reserva.EstadoReserva.CONFIRMADA);
         a.setEstado(Alojamiento.EstadoAlojamiento.OCUPADO);
         
-		reservas.add(r);
+		reservas.crear(r);
 	}
 	
 	public static void cancelarRESERVA(String id) throws ProgramException {
-		for (Reserva r : reservas) {
-            if (r.getId().equals(id)) {
-                if (r.getEstado() == Reserva.EstadoReserva.CANCELADA) {
-                    throw new ProgramException("La reserva: " + id + ", ya se encuentra cancelada.");
-                }
-                r.setEstado(Reserva.EstadoReserva.CANCELADA);
-                return;
-            }
-        }
-		throw new ProgramException("No existe una reserva con el ID: " + id);
+		reservas.cancelar(id);
 	}
 
 }

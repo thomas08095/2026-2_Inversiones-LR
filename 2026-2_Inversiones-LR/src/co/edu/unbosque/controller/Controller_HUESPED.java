@@ -1,13 +1,11 @@
 package co.edu.unbosque.controller;
-import java.util.ArrayList;
 import co.edu.unbosque.model.*;
-import co.edu.unbosque.view.*;
+import co.edu.unbosque.persistence.HuespedDAO;
 
 
 public class Controller_HUESPED {
 	
-	ArrayList<Huesped> huespedes = new ArrayList<Huesped>();
-	VentanaEmergente v = new VentanaEmergente();
+	protected HuespedDAO huespedes = new HuespedDAO();
 	
 	public void registrarHuesped(Huesped h) throws ProgramException {
         if(h.getId() == null || h.getId().isBlank() || h.getId().isEmpty()) {
@@ -22,22 +20,22 @@ public class Controller_HUESPED {
         if(h.getTelefono() == null || !h.getTelefono().matches("\\d{10}")) {
             throw new ProgramException("El Telefono no es valido. (Recuerda que son 10 Digitos.)");
         }
-        for(Huesped i : huespedes) {
+        for(Huesped i : huespedes.darLista()) {
             if(i.getId().equals(h.getId())) {
                 throw new ProgramException("EL ID YA EXISTE.");
             }
         }
-        huespedes.add(h);
+        huespedes.crear(h);
     }
 	
 	
 	
 	public String consultarHuespedes() throws ProgramException {
-		if (huespedes.isEmpty()) {
+		if (huespedes.darLista().isEmpty()) {
 	        throw new ProgramException("No hay huéspedes registrados actualmente.");
 	    }
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
-		for(Huesped i : huespedes) {
+		for(Huesped i : huespedes.darLista()) {
 			txt += "\n| NOMBRE: " + i.getNombreCompleto()
 			+ "\n| ID: " + i.getId() + "\n| CORREO: " + i.getCorreo() + "\n| TELEFONO: " + i.getTelefono()
 			+ "\n-------------------------------------------------------\n";
@@ -46,11 +44,11 @@ public class Controller_HUESPED {
 	}
 	
 	public String ID_MostrarHuespedes() throws ProgramException {
-		if (huespedes.isEmpty()) {
+		if (huespedes.darLista().isEmpty()) {
 	        throw new ProgramException("No hay huéspedes registrados actualmente.");
 	    }
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
-		for(Huesped h : huespedes) {
+		for(Huesped h : huespedes.darLista()) {
 				txt +=("\n| NOMBRE: " + h.getNombreCompleto()
 				+ "              | ID: " + h.getId() + "\n-------------------------------------------------------\n");
 		}
@@ -58,12 +56,7 @@ public class Controller_HUESPED {
 	}
 	
 	public Huesped ID_buscarHuesped(String id) throws ProgramException {
-		for(Huesped h : huespedes) {
-			if(h.getId().equals(id)) {
-				return h;
-			}
-		}
-		throw new ProgramException("No existe un huesped registrado con el ID: " + id);
+		return huespedes.buscarPorId(id);
 	}
 
 }

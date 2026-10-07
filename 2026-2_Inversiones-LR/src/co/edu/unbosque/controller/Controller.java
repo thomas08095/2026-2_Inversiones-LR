@@ -173,7 +173,11 @@ public class Controller {
         		+ "= ¿Que Capacidad Minima de Personas Busca? =\n");  
         int precioMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
         		+ "= ¿Que Precio Minimo busca? =\n");
-        con_A.buscarFiltro(a, personMIN, precioMIN,1);
+        try {
+			ventana.mostrar(con_A.buscarFiltro(a,personMIN,precioMIN));
+		} catch (ProgramException e) {
+			e.printStackTrace(); // FALTA TEXTO !!!!!
+		}
     }
         
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
