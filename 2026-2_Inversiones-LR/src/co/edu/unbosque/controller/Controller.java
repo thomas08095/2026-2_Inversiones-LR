@@ -184,7 +184,7 @@ public class Controller {
         
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
         try {
-            ventana.mostrar(con_H.consultarHuespedes());
+            ventana.mostrar(con_A.consultar());
         } catch (ProgramException e) {
             ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
         }
