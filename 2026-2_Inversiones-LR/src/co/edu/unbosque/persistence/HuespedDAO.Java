@@ -1,13 +1,13 @@
 package co.edu.unbosque.persistence;
 
 import co.edu.unbosque.model.*;
-import java.util.Collection;
+import java.util.List;
 import java.util.ArrayList;
 
 public class HuespedDAO implements DAO<Huesped> {
 
 
-    private Collection<Huesped> huespedes = new ArrayList<Huesped>();
+    private List<Huesped> huespedes = new ArrayList<Huesped>();
 
     @Override
     public void crear(Huesped huesped)  {
@@ -32,7 +32,4 @@ public class HuespedDAO implements DAO<Huesped> {
         }
         throw new ProgramException("No existe un huesped con ese ID.");
     }
-    
-
-
 }

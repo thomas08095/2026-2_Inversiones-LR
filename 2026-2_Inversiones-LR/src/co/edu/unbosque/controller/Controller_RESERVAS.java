@@ -48,7 +48,7 @@ public class Controller_RESERVAS {
 		for (Reserva r : reservas) {
             if (r.getId().equals(id)) {
                 if (r.getEstado() == Reserva.EstadoReserva.CANCELADA) {
-                    throw new ProgramException("La reserva " + id + " ya se encuentra cancelada.");
+                    throw new ProgramException("La reserva: " + id + ", ya se encuentra cancelada.");
                 }
                 r.setEstado(Reserva.EstadoReserva.CANCELADA);
                 return;
