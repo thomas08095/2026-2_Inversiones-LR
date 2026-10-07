@@ -49,17 +49,18 @@ public class Controller_RESERVAS {
             throw new ProgramException("No hay reservas registradas en el sistema.");
         }
         
-        StringBuilder txt = new StringBuilder("||====== LISTA DE RESERVAS ======||\n");
+        String txt = "||====== LISTA DE RESERVAS ======||\n";
+        
         for (Reserva r : reservas.darLista()) {
-            txt.append("\n| ID RESERVA: ").append(r.getId())
-               .append("\n| ESTADO: ").append(r.getEstado())
-               .append("\n| HUESPED: ").append(r.getHuesped().getNombreCompleto())
-               .append("\n| ALOJAMIENTO: ").append(r.getAlojamiento().getNombre())
-               .append("\n| FECHAS: ").append(r.getFechaLlegada()).append(" a ").append(r.getFechaSalida())
-               .append("\n| TOTAL: $").append(r.getValorTotal())
-               .append("\n-------------------------------------------------------\n");
+            txt += "\n| ID RESERVA: " + r.getId()
+                 + "\n| ESTADO: " + r.getEstado()
+                 + "\n| HUESPED: " + r.getHuesped().getNombreCompleto()
+                 + "\n| ALOJAMIENTO: " + r.getAlojamiento().getNombre()
+                 + "\n| FECHAS: " + r.getFechaLlegada() + " a " + r.getFechaSalida()
+                 + "\n| TOTAL: $" + r.getValorTotal()
+                 + "\n-------------------------------------------------------\n";
         }
-        return txt.toString();
+        return txt;
     }
 	
 	public static void cancelarRESERVA(String id) throws ProgramException {
