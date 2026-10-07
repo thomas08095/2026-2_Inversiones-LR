@@ -110,7 +110,7 @@ public class Controller_ALOJAMIENTOS {
         if (a.getPrecioBase() <= 0) {
             throw new ProgramException("El precio base debe ser mayor a cero.");
         }
-        alojamientos.add(a);        
+        alojamientos.add(a);     
     }
 	
 }

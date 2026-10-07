@@ -16,11 +16,13 @@ public class HuespedDAO implements DAO<Huesped> {
 
      public Huesped buscarPorId(String id) throws ProgramException {
         for (Huesped h : huespedes) {
-            if (h.getId().equals(id)) return h;
+            if (h.getId().equals(id)) 
+                
+                return h;
         }
         throw new ProgramException("No existe un huesped con ese ID.");
     }
-    
+
     public void eliminar(String id) throws ProgramException {
         for (int i = 0; i < huespedes.size(); i++) {
             if (huespedes.get(i).getId().equals(id)) {

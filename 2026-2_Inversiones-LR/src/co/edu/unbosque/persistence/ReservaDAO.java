@@ -16,8 +16,9 @@ public class ReservaDAO implements DAO<Reserva> {
     @Override
     public Reserva buscarPorId(String id) throws ProgramException {
         for (Reserva r : reservas) {
-            // String.valueOf funciona si el id de Reserva es int o String
-            if (String.valueOf(r.getId()).equals(id)) return r;
+            if (String.valueOf(r.getId()).equals(id)) 
+                
+                return r;
         }
         throw new ProgramException("No existe una reserva con ese ID.");
     }
