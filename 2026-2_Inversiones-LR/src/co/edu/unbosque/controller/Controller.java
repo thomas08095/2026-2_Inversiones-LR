@@ -316,6 +316,9 @@ public class Controller {
         }
       }
     }
+    public static void reservaDETALLES(int respuesta) {
+    	
+    }
     public static void reservaCANCELAR(int respuesta) {
     	
     }
@@ -329,7 +332,6 @@ public class Controller {
             
             String infoHuespedes = con_H.consultarHuespedes();
             reporte.generarReporteTxt("Reporte_Huespedes", infoHuespedes);
-            
         } 
         catch (ProgramException e) {
             ventana.mostrarERROR("No se pudieron generar los reportes:\n" + e.getMessage(), "ERROR DE REPORTES");
