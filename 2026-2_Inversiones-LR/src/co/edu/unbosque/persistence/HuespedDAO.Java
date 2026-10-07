@@ -25,7 +25,7 @@ public class HuespedDAO implements DAO<Huesped> {
 
     public void eliminar(String id) throws ProgramException {
         for (int i = 0; i < huespedes.size(); i++) {
-            if (((ArrayList<Huesped>) huespedes).get(i).getId().equals(id)) {
+            if (huespedes.get(i).getId().equals(id)) {
                 huespedes.remove(i);
                 return;
             }
