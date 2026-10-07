@@ -56,7 +56,7 @@ public class Controller_ALOJAMIENTOS {
 	    return alo;
 	}
 	
-	public String buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMIN) throws ProgramException{
+	public String buscarFiltro(Alojamiento aFILTRO, int capacidadMIN, int precioMAX) throws ProgramException{
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos.darLista()) {
 			boolean encontrado = true;
@@ -64,13 +64,13 @@ public class Controller_ALOJAMIENTOS {
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
 				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
-				if(precioMIN > 0 && a.getPrecioBase() < precioMIN) encontrado = false;
+				if(precioMAX > 0 && a.getPrecioBase() > precioMAX) encontrado = false;
 				if(encontrado) resultados.add(a);
 		}
 		return consultarF(resultados);
 	}
 	
-	public void buscarFiltroRESERVAS(Alojamiento aFILTRO, int capacidadMIN, int precioMIN) throws ProgramException{
+	public void buscarFiltroRESERVAS(Alojamiento aFILTRO, int capacidadMIN, int precioMAX) throws ProgramException{
 		ArrayList<Alojamiento> resultados = new ArrayList<Alojamiento>();
 		for (Alojamiento a : alojamientos.darLista()) {
 			boolean encontrado = true;
@@ -78,7 +78,7 @@ public class Controller_ALOJAMIENTOS {
 				if(a.getCapacidad() < capacidadMIN) encontrado = false;
 				if(!aFILTRO.getTipo().equals(a.getTipo())) encontrado = false;
 				if(a.getEstado() == Alojamiento.EstadoAlojamiento.CANCELADO || a.getEstado() == Alojamiento.EstadoAlojamiento.OCUPADO) encontrado = false;
-				if(precioMIN > 0 && a.getPrecioBase() < precioMIN) encontrado = false;
+				if(precioMAX > 0 && a.getPrecioBase() > precioMAX) encontrado = false;
 				if(encontrado) resultados.add(a);
 		}
 		consultarF_RESERVAS(resultados);

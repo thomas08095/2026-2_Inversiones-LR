@@ -174,11 +174,11 @@ public class Controller {
         int personMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
         		+ "= ¿Que Capacidad Minima de Personas Busca? =\n");  
         int precioMIN = ventana.LeerInt("=== ALOJAMIENTO ===\n"
-        		+ "= ¿Que Precio Minimo busca? =\n");
+        		+ "= ¿Que Precio Máximo busca? =\n");
         try {
 			ventana.mostrar(con_A.buscarFiltro(a,personMIN,precioMIN));
 		} catch (ProgramException e) {
-			e.printStackTrace(); // FALTA TEXTO !!!!!
+			ventana.mostrarERROR("Error en la búsqueda:\n" + e.getMessage(), "BÚSQUEDA FALLIDA");
 		}
     }
         
@@ -317,10 +317,26 @@ public class Controller {
       }
     }
     public static void reservaDETALLES(int respuesta) {
-    	
+    	try {
+            String detalles = Controller_RESERVAS.consultarReservas();
+            ventana.mostrar(detalles);
+        } catch (ProgramException e) {
+            ventana.mostrarERROR(e.getMessage(), "SIN RESERVAS");
+        }
     }
     public static void reservaCANCELAR(int respuesta) {
-    	
+    	String id = ventana.LeerString("||====== CANCELAR RESERVA =======||\n\n"
+                + "| Ingrese el Identificador de la Reserva a cancelar.\n\n"
+                + "||=============================||\n");
+        
+        if (id == null || id.isBlank()) return; 
+        
+        try {
+            Controller_RESERVAS.cancelarRESERVA(id);
+            ventana.mostrar("La reserva '" + id + "' ha sido cancelada exitosamente.\nEl alojamiento vuelve a estar DISPONIBLE.");
+        } catch (ProgramException e) {
+            ventana.mostrarERROR(e.getMessage(), "ERROR AL CANCELAR");
+        }
     }
     
     public static void generarREPORTES() {
