@@ -86,7 +86,7 @@ public class Controller_ALOJAMIENTOS {
 	
 	public String ID_MostrarAlojamiento() throws ProgramException {
 		if (alojamientos.darLista().isEmpty()) {
-	        throw new ProgramException("No hay huéspedes registrados actualmente.");
+	        throw new ProgramException("No hay Alojamientos registrados actualmente.");
 	    }
 		String txt = "||====== LISTA DE ALOJAMIENTOS ======||\n";
 		for(Alojamiento a : alojamientos.darLista()) {

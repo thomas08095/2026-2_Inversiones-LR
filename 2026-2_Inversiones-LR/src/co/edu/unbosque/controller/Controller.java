@@ -328,10 +328,10 @@ public class Controller {
             Reporte reporte = new Reporte();
             
             String infoAlojamientos = con_A.consultar();
-            reporte.generarReporteTxt("Reporte_Alojamientos", infoAlojamientos);
+            reporte.generarReporteTxt(infoAlojamientos, "Reporte_Alojamientos");
             
             String infoHuespedes = con_H.consultarHuespedes();
-            reporte.generarReporteTxt("Reporte_Huespedes", infoHuespedes);
+            reporte.generarReporteTxt(infoHuespedes,"Reporte_Huespedes");
         } 
         catch (ProgramException e) {
             ventana.mostrarERROR("No se pudieron generar los reportes:\n" + e.getMessage(), "ERROR DE REPORTES");
