@@ -27,16 +27,15 @@ public class ReservaDAO implements DAO<Reserva> {
         throw new ProgramException("Las reservas no se eliminan, se cancelan.");
     }
     
-    public void cancelarReserva(String id) throws ProgramException {
-		for (Reserva r : reservas) {
-			if (r.getId().equals(id)) {
-				if (r.getEstado() == Reserva.EstadoReserva.CANCELADA) {
-					throw new ProgramException("La reserva: " + id + ", ya se encuentra cancelada.");
-				}
-				r.setEstado(Reserva.EstadoReserva.CANCELADA);
-				return;
-			}
-		}
-		throw new ProgramException("No existe una reserva con el ID: " + id);
-	}
+    public void cancelar(String id) throws ProgramException {
+        Reserva r = buscarPorId(id);
+        if (r.getEstado() == Reserva.EstadoReserva.CANCELADA) {
+            throw new ProgramException("La reserva " + id + " ya se encuentra cancelada.");
+        }
+        
+        r.setEstado(Reserva.EstadoReserva.CANCELADA);
+        if (r.getAlojamiento() != null) {
+            r.getAlojamiento().setEstado(Alojamiento.EstadoAlojamiento.ACTIVO);
+        }
+    }
 }

@@ -54,9 +54,18 @@ public class VentanaEmergente {
 	}
 	
 	public LocalDate LeerFecha(String txt) {
-		String aux = JOptionPane.showInputDialog(txt);
-		LocalDate fecha = LocalDate.parse(aux);
-		return fecha;
+	    while (true) {
+	        try {
+	            String aux = JOptionPane.showInputDialog(txt);
+	            if (aux == null) {
+	            	return null;
+	            }
+	            return LocalDate.parse(aux);
+	        } 
+	        catch (Exception e) {
+	            mostrarERROR("Formato de fecha inválido.\nPor favor use el formato AAAA-MM-DD (ej: 2026-12-31)", "ERROR DE FECHA");
+	        }
+	    }
 	}
 
 }
