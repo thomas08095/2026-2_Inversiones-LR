@@ -96,6 +96,32 @@ public class Controller_ALOJAMIENTOS {
 		return txt;
 	}
 	
+	public String reporteAlojamientosPorTipo() throws ProgramException {
+        if (alojamientos.darLista().isEmpty()) {
+            throw new ProgramException("No hay alojamientos para generar el reporte por tipo.");
+        }
+        
+        int casas = 0, apartamentos = 0, cabanas = 0;
+        
+        for (Alojamiento a : alojamientos.darLista()) {
+            if (a.getTipo().equalsIgnoreCase("Casa")) {
+                casas++;
+            } else if (a.getTipo().equalsIgnoreCase("Apartamento")) {
+                apartamentos++;
+            } else if (a.getTipo().equalsIgnoreCase("Cabaña") || a.getTipo().equalsIgnoreCase("Cabana")) {
+                cabanas++;
+            }
+        }
+        
+        String txt = "||====== CANTIDAD DE ALOJAMIENTOS POR TIPO ======||\n\n"
+                   + "| Casas registradas: " + casas + "\n"
+                   + "| Apartamentos registrados: " + apartamentos + "\n"
+                   + "| Cabañas registradas: " + cabanas + "\n\n"
+                   + "||===============================================||\n";
+        
+        return txt;
+    }
+	
 	public Alojamiento ID_buscarAlojamiento(String id) throws ProgramException {
 		return alojamientos.buscarPorId(id);
 	}
@@ -119,6 +145,7 @@ public class Controller_ALOJAMIENTOS {
         }
         alojamientos.crear(a);
     }
+	
 	
 }
  

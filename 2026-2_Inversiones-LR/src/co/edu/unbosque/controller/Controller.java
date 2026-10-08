@@ -368,9 +368,15 @@ public class Controller {
             
             String infoHuespedes = con_H.consultarHuespedes();
             reporte.generarReporteTxt(infoHuespedes,"Reporte_Huespedes");
+            
+            String infoTipos = con_A.reporteAlojamientosPorTipo();
+            reporte.generarReporteTxt(infoTipos, "Reporte_Inventario_Tipos");
+            
+            ventana.mostrar("Los reportes se han generado y guardado exitosamente en formato .txt");
         } 
         catch (ProgramException e) {
             ventana.mostrarERROR("No se pudieron generar los reportes:\n" + e.getMessage(), "ERROR DE REPORTES");
         }
     }
 }
+
