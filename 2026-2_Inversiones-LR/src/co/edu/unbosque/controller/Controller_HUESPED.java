@@ -43,10 +43,7 @@ public class Controller_HUESPED {
 		return txt;
 	}
 	
-	public String ID_MostrarHuespedes() throws ProgramException {
-		if (huespedes.darLista().isEmpty()) {
-	        throw new ProgramException("No hay huéspedes registrados actualmente.");
-	    }
+	public String ID_MostrarHuespedes() {
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
 		for(Huesped h : huespedes.darLista()) {
 				txt +=("\n| NOMBRE: " + h.getNombreCompleto()

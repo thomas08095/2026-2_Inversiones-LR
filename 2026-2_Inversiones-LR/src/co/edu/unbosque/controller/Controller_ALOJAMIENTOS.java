@@ -99,7 +99,6 @@ public class Controller_ALOJAMIENTOS {
 	public Alojamiento ID_buscarAlojamiento(String id) throws ProgramException {
 		return alojamientos.buscarPorId(id);
 	}
-	
 	public void registrarAlojamiento(Alojamiento a) throws ProgramException {
         if (a.getId() == null || a.getId().isBlank() || a.getId().isEmpty()) {
             throw new ProgramException("El ID del alojamiento está vacío.");

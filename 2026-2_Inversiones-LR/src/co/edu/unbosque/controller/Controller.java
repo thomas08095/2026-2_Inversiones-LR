@@ -4,9 +4,16 @@ import java.time.LocalDate;
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.persistence.Reporte;
 import co.edu.unbosque.view.*;
-
+/**
+ * Cerebro del Programa.
+ * <p>Encargado de dar el orden y tener el control de todas las acciones del usuario.
+ * <p>Muestra y controla lo necesario para la funcionalidad del programa.
+ * @author Gabriel Alejandro Morales Diaz
+ * @author Thomas Molina Contreras
+ * @author Santiago Saavedra Vanegas
+ */
 public class Controller {
-
+	
     private static Menu menu = new Menu();
     private static VentanaEmergente ventana = new VentanaEmergente();
     
@@ -15,6 +22,14 @@ public class Controller {
     private static Controller_HUESPED con_H = new Controller_HUESPED();
     private static Controller_ALOJAMIENTOS con_A = new Controller_ALOJAMIENTOS();
     
+    /**
+     * Inicio.
+     * <p>Aca el programa te muestra un MENU completamente interactivo para que
+     * eligas la opcion que prefieras usar del programa, tambien se llaman multiples metodos para hacer las acciones posibles.
+     * @author Gabriel Alejandro Morales Diaz
+     * @author Thomas Molina Contreras
+     * @author Santiago Saavedra Vanegas
+     */
     public static void start() {
         boolean end = false;
         int respuesta = 0;
@@ -329,7 +344,8 @@ public class Controller {
     		ventana.mostrarERROR("Lo sentimos.\nNo hay reservas guardadas actuatmente.","ERROR");
     		return;
 	    }
-    	String id = ventana.LeerString("||====== CANCELAR RESERVA =======||\n\n"
+    	String id = ventana.LeerString(Controller_RESERVAS.ID_MostrarReservas()
+    			+ "\n||====== CANCELAR RESERVA =======||\n"
                 + "| Ingrese el Identificador de la Reserva a cancelar.\n\n"
                 + "||=============================||\n");
         

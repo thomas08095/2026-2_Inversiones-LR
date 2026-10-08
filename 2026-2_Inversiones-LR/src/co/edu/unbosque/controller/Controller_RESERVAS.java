@@ -5,6 +5,7 @@ import co.edu.unbosque.model.Alojamiento;
 import co.edu.unbosque.model.Huesped;
 import co.edu.unbosque.model.ProgramException;
 import co.edu.unbosque.model.Reserva;
+import co.edu.unbosque.model.Reserva.EstadoReserva;
 import co.edu.unbosque.persistence.ReservaDAO;
 
 public class Controller_RESERVAS {
@@ -62,6 +63,20 @@ public class Controller_RESERVAS {
         }
         return txt;
     }
+	public static String ID_MostrarReservas(){
+		String txt = "||============ LISTA DE RESERVAS ============||";
+		for(Reserva r : reservas.darLista()) {
+			if(r.getEstado() == EstadoReserva.CONFIRMADA) {
+			txt +=("\n| ID: " + r.getId() +
+					"\n| HUESPED: " + r.getHuesped().getNombreCompleto() +
+					"\n| ALOJAMIENTO: " + r.getAlojamiento().getNombre() +
+					"\n----------------");
+			}
+		}
+		txt+="\n||====================================================||";
+		return txt;
+	}
+	
 	
 	public static void cancelarRESERVA(String id) throws ProgramException {
 		 if (!hayRESERVAS()) {
