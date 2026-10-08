@@ -51,7 +51,7 @@ public class Controller {
                     alojamientos_BUSCAR(respuesta);
                     break;
                 default:
-                    System.out.println("GAY");
+                    ventana.mostrarERROR("Accion Invalida", "ERROR");
                     break;
                 }
                 break;
@@ -70,7 +70,7 @@ public class Controller {
                      }
                     break;
                 default:
-                    System.out.println("GAY");
+                	ventana.mostrarERROR("Accion Invalida", "ERROR");
                     break;
                 }
                 break;
@@ -91,7 +91,7 @@ public class Controller {
                 	reservaCANCELAR();
                 	break;
                 default:
-                	System.out.println("GAY");
+                	ventana.mostrarERROR("Accion Invalida", "ERROR");
                 	break;
                 }
                 break;
