@@ -1,10 +1,8 @@
 package co.edu.unbosque.controller;
 import java.util.ArrayList;
-import co.edu.unbosque.model.Alojamiento;
-import co.edu.unbosque.model.Huesped;
-import co.edu.unbosque.model.ProgramException;
-import co.edu.unbosque.persistence.AlojamientoDAO;
-import co.edu.unbosque.view.*;
+import co.edu.unbosque.persistence.*;
+import co.edu.unbosque.model.*;
+
 public class Controller_ALOJAMIENTOS {
 	
 	protected AlojamientoDAO alojamientos = new AlojamientoDAO();

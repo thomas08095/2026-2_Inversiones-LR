@@ -2,7 +2,7 @@ package co.edu.unbosque.controller;
 import java.time.LocalDate;
 
 import co.edu.unbosque.model.*;
-import co.edu.unbosque.persistence.Reporte;
+import co.edu.unbosque.persistence.*;
 import co.edu.unbosque.view.*;
 /**
  * Cerebro del Programa.
