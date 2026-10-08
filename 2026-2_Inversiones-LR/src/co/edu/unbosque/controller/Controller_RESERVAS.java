@@ -45,9 +45,9 @@ public class Controller_RESERVAS {
 	}
 	
 	public static String consultarReservas() throws ProgramException {
-        if (reservas.darLista().isEmpty()) {
+		if (!hayRESERVAS()) {
             throw new ProgramException("No hay reservas registradas en el sistema.");
-        }
+		}
         
         String txt = "||====== LISTA DE RESERVAS ======||\n";
         
@@ -64,7 +64,17 @@ public class Controller_RESERVAS {
     }
 	
 	public static void cancelarRESERVA(String id) throws ProgramException {
+		 if (!hayRESERVAS()) {
+	            throw new ProgramException("No hay reservas registradas en el sistema.");
+	    }
 		reservas.cancelar(id);
+	}
+	
+	public static boolean hayRESERVAS() {
+		 if (reservas.darLista().isEmpty()) {
+	            return false;
+	    }
+		 else return true;
 	}
 
 }

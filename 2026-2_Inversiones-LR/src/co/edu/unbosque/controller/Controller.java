@@ -49,7 +49,7 @@ public class Controller {
                     break;
                 case 2:
                      try {
-                        con_H.consultarHuespedes();
+                        ventana.mostrar(con_H.consultarHuespedes());
                      } catch (ProgramException e) {
                          ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
                      }
@@ -70,10 +70,10 @@ public class Controller {
                     }
                     break;
                 case 2:
-                	
+                	reservaDETALLES();
                 	break;
                 case 3:
-                	reservaCANCELAR(respuesta);
+                	reservaCANCELAR();
                 	break;
                 default:
                 	System.out.println("GAY");
@@ -316,7 +316,7 @@ public class Controller {
         }
       }
     }
-    public static void reservaDETALLES(int respuesta) {
+    public static void reservaDETALLES() {
     	try {
             String detalles = Controller_RESERVAS.consultarReservas();
             ventana.mostrar(detalles);
@@ -324,7 +324,11 @@ public class Controller {
             ventana.mostrarERROR(e.getMessage(), "SIN RESERVAS");
         }
     }
-    public static void reservaCANCELAR(int respuesta) {
+    public static void reservaCANCELAR() {
+    	if (!Controller_RESERVAS.hayRESERVAS()) {
+    		ventana.mostrarERROR("Lo sentimos.\nNo hay reservas guardadas actuatmente.","ERROR");
+    		return;
+	    }
     	String id = ventana.LeerString("||====== CANCELAR RESERVA =======||\n\n"
                 + "| Ingrese el Identificador de la Reserva a cancelar.\n\n"
                 + "||=============================||\n");
