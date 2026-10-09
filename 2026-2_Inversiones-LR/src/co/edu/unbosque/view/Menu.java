@@ -75,7 +75,7 @@ public class Menu {
 	 * 
 	 * @return Texto con las opciones de registrar y consultar huéspedes.
 	 */
-	public static String menu_HUESPEDES() {
+	public String menu_HUESPEDES() {
 		txt = ("||====== HUESPEDES =======||\n\n"
 				+ "| 1. Registrar Huespedes.\n"
 				+ "| 2. Consultar Detalles de Huespedes.\n\n"

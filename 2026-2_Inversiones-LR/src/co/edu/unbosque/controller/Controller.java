@@ -8,9 +8,6 @@ import co.edu.unbosque.view.*;
  * Cerebro del Programa.
  * <p>Encargado de dar el orden y tener el control de todas las acciones del usuario.
  * <p>Muestra y controla lo necesario para la funcionalidad del programa.
- * @author Gabriel Alejandro Morales Diaz
- * @author Thomas Molina Contreras
- * @author Santiago Saavedra Vanegas
  */
 public class Controller {
 	
@@ -26,9 +23,6 @@ public class Controller {
      * Inicio.
      * <p>Aca el programa te muestra un MENU completamente interactivo para que
      * eligas la opcion que prefieras usar del programa, tambien se llaman multiples metodos para hacer las acciones posibles.
-     * @author Gabriel Alejandro Morales Diaz
-     * @author Thomas Molina Contreras
-     * @author Santiago Saavedra Vanegas
      */
     public static void start() {
         boolean end = false;
@@ -108,7 +102,11 @@ public class Controller {
             }
         }
     }
-    
+    /**
+     * Generador de Alojamientos Predeterminados.
+     * <p>Se crean unos 7 Apartamentos de sus 3 tipos (Casa, Apartamento y Cabaña), todas para uso del programa, al no poder
+     * registrar nuevos.
+     */
     public static void crearALOJAMIENTOS() {
     	 try {
              a = new Casa("1234567890", "CASA BLANCA DE DOS PISOS", "Calle 160b #10-55", 
@@ -142,6 +140,12 @@ public class Controller {
 
     }
         
+    /**
+     * Busqueda de Alojamientos con Filtros.
+     * <p>Se preguntan los datos necesarios para MOSTRAR un ALOJAMIENTO en el programa hacia el usuario,
+     * su unica funcion es mostrar.
+     * @param respuesta Integer que se recicla para poner respuestas.
+     */
     public static void alojamientos_BUSCAR(int respuesta) {
     	 respuesta = ventana.LeerInt("=== ALOJAMIENTO ===\n"
          		+ "= ¿Que tipo de Alojamiento le Interesa? =\n"
@@ -196,7 +200,11 @@ public class Controller {
 			ventana.mostrarERROR("Error en la búsqueda:\n" + e.getMessage(), "BÚSQUEDA FALLIDA");
 		}
     }
-        
+    /**
+     * Busqueda de Alojamientos.
+     * <p>Muestra los Alojamientos del programa.
+     * @param respuesta Integer que se recicla para poner respuestas.
+     */  
     public static void alojamientos_CONSULTAR_SINFILTROS(int respuesta) {
         try {
             ventana.mostrar(con_A.consultar());
@@ -204,7 +212,12 @@ public class Controller {
             ventana.mostrarERROR("Lo Sentimos.\n" + e.getMessage(), "ERROR");
         }
     }
-        
+    /**
+     * Registra un Huesped.
+     * <p>Mediante las opciones y preferencias del usuario, se guardara un nuevo HUESPED
+     * para el programa.
+     * @param respuesta Integer que se recicla para poner respuestas.
+     */     
     public static void huespedes_REGISTRAR(int respuesta) {
         boolean end = false;
         while(!end) {
@@ -260,7 +273,14 @@ public class Controller {
                 ventana.mostrar("Se Registrara el Huesped devuelta.");
             }
         }
-    }   
+    } 
+    /**
+     * Crea las Reservas.
+     * <p>Mediante las preferencias del usuario, creera una nueva RESERVA, de los metodos mas importante y mas fundamentales
+     * del programa.
+     * <p>Requiere un Alojamiento tanto Huesped ya creados.
+     * @param respuesta Integer que se recicla para poner respuestas.
+     */  
     public static void reservaCREAR(int respuesta) throws ProgramException {
     	boolean end = false;
     	while(!end) {
@@ -331,6 +351,10 @@ public class Controller {
         }
       }
     }
+    /**
+     * Muestra las Reservas Creadas, junto a detalles varios.
+     * @param respuesta Integer que se recicla para poner respuestas.
+     */  
     public static void reservaDETALLES() {
     	try {
             String detalles = Controller_RESERVAS.consultarReservas();
@@ -339,6 +363,11 @@ public class Controller {
             ventana.mostrarERROR(e.getMessage(), "SIN RESERVAS");
         }
     }
+    
+    /**
+     * Cancelacion de Reserva.
+     * <p>Cancela las reservas posibles del programa, mediante preguntar unicamente su ID.
+     */  
     public static void reservaCANCELAR() {
     	if (!Controller_RESERVAS.hayRESERVAS()) {
     		ventana.mostrarERROR("Lo sentimos.\nNo hay reservas guardadas actuatmente.","ERROR");
@@ -358,7 +387,11 @@ public class Controller {
             ventana.mostrarERROR(e.getMessage(), "ERROR AL CANCELAR");
         }
     }
-    
+    /**
+     * Genera Reportes.
+     * <p>Estos reportes cuenta con la informacion de los Alojamientos y Huespedes, cada uno guardado
+     * en su .txt unico.
+     */  
     public static void generarREPORTES() {
         try {
             Reporte reporte = new Reporte();

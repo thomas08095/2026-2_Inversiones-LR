@@ -2,11 +2,22 @@ package co.edu.unbosque.controller;
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.persistence.HuespedDAO;
 
-
+/**
+ * Controlador Dedicado unicamente a los Huespedes.
+ * <p>Este controlador se dedica al control de todo lo relacionado con los Huespedes,
+ * su creacion, consultar sus detalles y mas.
+ * <p>Todo el Cerebro de los Huespedes.
+ */
 public class Controller_HUESPED {
 	
-	protected HuespedDAO huespedes = new HuespedDAO();
+	private HuespedDAO huespedes = new HuespedDAO();
 	
+	/**
+	 * Registra a un Huesped.
+	 * <p>Segun los requerimientos del Usuario, se creara un Huesped si cumple con las reglas del programa.
+	 * @param h Huesped a Crear.
+	 * @throws ProgramException por si salen errores en la creacion.
+	 */
 	public void registrarHuesped(Huesped h) throws ProgramException {
         if(h.getId() == null || h.getId().isBlank() || h.getId().isEmpty()) {
             throw new ProgramException("Tu ID esta vacia.");
@@ -30,6 +41,11 @@ public class Controller_HUESPED {
 	
 	
 	
+	/**
+	 * Consulta y muestra todos los Huespedes registrados en el Programa.
+	 * @return retorna en String los Huespedes registrados.
+	 * @throws ProgramException Por si no hay errores.
+	 */
 	public String consultarHuespedes() throws ProgramException {
 		if (huespedes.darLista().isEmpty()) {
 	        throw new ProgramException("No hay huéspedes registrados actualmente.");
@@ -43,6 +59,10 @@ public class Controller_HUESPED {
 		return txt;
 	}
 	
+	/**
+	 * Muestra a los Huespedes por su ID.
+	 * @return retorna en String los Huespedes con su Nombre e ID.
+	 */
 	public String ID_MostrarHuespedes() {
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
 		for(Huesped h : huespedes.darLista()) {
@@ -52,6 +72,12 @@ public class Controller_HUESPED {
 		return txt;
 	}
 	
+	/**
+	 * Busca a los Huespedes por su ID.
+	 * @param id del Huesped a Buscar.
+	 * @return el Huesped del ID correspondiente
+	 * @throws ProgramException por si no existe el Huesped o no hay registrados.
+	 */
 	public Huesped ID_buscarHuesped(String id) throws ProgramException {
 		return huespedes.buscarPorId(id);
 	}
