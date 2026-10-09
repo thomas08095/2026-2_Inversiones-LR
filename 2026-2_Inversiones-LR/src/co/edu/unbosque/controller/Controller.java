@@ -283,6 +283,10 @@ public class Controller {
      */  
     public static void reservaCREAR(int respuesta) throws ProgramException {
     	boolean end = false;
+    	if(!con_H.hayHuespedes()) {
+    		ventana.mostrarERROR("Lo Sentimos, No Hay Huespedes registrados Actualmente","ERROR");
+    		return;
+    	}
     	while(!end) {
     	
     	try {

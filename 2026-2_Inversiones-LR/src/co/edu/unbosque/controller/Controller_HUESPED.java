@@ -47,7 +47,7 @@ public class Controller_HUESPED {
 	 * @throws ProgramException Por si no hay errores.
 	 */
 	public String consultarHuespedes() throws ProgramException {
-		if (huespedes.darLista().isEmpty()) {
+		if (!hayHuespedes()) {
 	        throw new ProgramException("No hay huéspedes registrados actualmente.");
 	    }
 		String txt = "||====== LISTA DE HUESPEDES ======||\n";
@@ -80,6 +80,14 @@ public class Controller_HUESPED {
 	 */
 	public Huesped ID_buscarHuesped(String id) throws ProgramException {
 		return huespedes.buscarPorId(id);
+	}
+	
+	/**
+	 * Verifica que existan Huespedes en el Arreglo.
+	 */
+	public boolean hayHuespedes(){
+		if(huespedes.darLista().isEmpty()) return false;
+		else return true;
 	}
 
 }
